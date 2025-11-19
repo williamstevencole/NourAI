@@ -1,0 +1,570 @@
+{
+  "metadata": {
+    "version": "2.2",
+    "last_updated": "2025-10-29",
+    "total_organizations": 22,
+    "total_documents": 32,
+    "languages": ["es", "en"],
+    "description": "Índice completo de documentos sobre enfermedades crónicas, nutrición y salud de organizaciones internacionales reconocidas"
+  },
+  "organizations": {
+    "oms": {
+      "full_name": "Organización Mundial de la Salud",
+      "acronym": "OMS",
+      "english_name": "World Health Organization",
+      "english_acronym": "WHO",
+      "country": "Internacional",
+      "website": "https://www.who.int",
+      "type": "Organismo Internacional de las Naciones Unidas",
+      "documents": [
+        {
+          "id": "oms_001",
+          "title": "Informe Mundial sobre la Diabetes",
+          "year": 2016,
+          "language": "es",
+          "link": "https://apps.who.int/iris/bitstream/handle/10665/254649/9789243565255-spa.pdf",
+          "location_in_pc": "data/pdfs/oms/informe_mundial_diabetes_2016.pdf",
+          "author": "Organización Mundial de la Salud",
+          "pages": 88,
+          "format": "PDF",
+          "isbn": "9789243565255"
+        },
+        {
+          "id": "oms_005",
+          "title": "Dieta, Nutrición y Prevención de Enfermedades Crónicas",
+          "year": 2003,
+          "language": "es",
+          "link": "https://www.fao.org/4/ac911s/ac911s00.pdf",
+          "location_in_pc": "data/pdfs/oms/dieta_nutricion_prevencion_cronicas.pdf",
+          "author": "OMS/FAO",
+          "pages": 152,
+          "format": "PDF"
+        }
+      ]
+    },
+    "ops": {
+      "full_name": "Organización Panamericana de la Salud",
+      "acronym": "OPS",
+      "english_name": "Pan American Health Organization",
+      "english_acronym": "PAHO",
+      "country": "Regional - Américas",
+      "website": "https://www.paho.org",
+      "type": "Oficina Regional de la OMS para las Américas",
+      "documents": [
+        {
+          "id": "ops_001",
+          "title": "Plan de Acción para la Prevención y el Control de las ENT en las Américas 2013-2019",
+          "year": 2013,
+          "language": "es",
+          "link": "https://www3.paho.org/hq/dmdocuments/2015/plan-accion-prevencion-control-ent-americas.pdf",
+          "location_in_pc": "data/pdfs/ops/plan_accion_ent_americas_2013_2019.pdf",
+          "author": "Organización Panamericana de la Salud",
+          "pages": 58,
+          "format": "PDF"
+        },
+        {
+          "id": "ops_003",
+          "title": "Manual para el Cuidado de Personas con Enfermedades Crónicas No Transmisibles",
+          "year": 2017,
+          "language": "es",
+          "link": "https://iris.paho.org/bitstream/handle/10665.2/34520/9789503802397_spa.pdf",
+          "location_in_pc": "data/pdfs/ops/manual_cuidado_ent.pdf",
+          "author": "Organización Panamericana de la Salud",
+          "format": "PDF",
+          "isbn": "9789503802397"
+        }
+      ]
+    },
+    "fao": {
+      "full_name": "Organización de las Naciones Unidas para la Alimentación y la Agricultura",
+      "acronym": "FAO",
+      "english_name": "Food and Agriculture Organization",
+      "english_acronym": "FAO",
+      "country": "Internacional",
+      "website": "https://www.fao.org",
+      "type": "Agencia Especializada de las Naciones Unidas",
+      "documents": [
+        {
+          "id": "fao_001",
+          "title": "El Estado de las Guías Alimentarias Basadas en Alimentos en América Latina y el Caribe",
+          "year": 2014,
+          "language": "es",
+          "link": "https://www.fao.org/4/i3677s/i3677s.pdf",
+          "location_in_pc": "data/pdfs/fao/estado_guias_alimentarias_latam_caribe.pdf",
+          "author": "FAO",
+          "pages": 88,
+          "format": "PDF"
+        },
+        {
+          "id": "fao_002",
+          "title": "Panorama de la Seguridad Alimentaria y Nutricional en América Latina y el Caribe",
+          "year": 2019,
+          "language": "es",
+          "link": "https://iris.paho.org/bitstream/handle/10665.2/51685/9789251319581FAO_spa.pdf",
+          "location_in_pc": "data/pdfs/fao/panorama_seguridad_alimentaria_latam_2019.pdf",
+          "author": "FAO, OPS, WFP y UNICEF",
+          "pages": 135,
+          "format": "PDF",
+          "isbn": "9789251319581"
+        }
+      ]
+    },
+    "sesal": {
+      "full_name": "Secretaría de Salud de Honduras",
+      "acronym": "SESAL",
+      "english_name": "Ministry of Health of Honduras",
+      "country": "Honduras",
+      "website": "http://www.salud.gob.hn",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "sesal_001",
+          "title": "Protocolo de Atención Clínica para Diabetes Mellitus Tipo 2 en Primer Nivel",
+          "year": 2023,
+          "language": "es",
+          "link": "https://honduras.bvsalud.org/?page_id=2025",
+          "location_in_pc": "data/pdfs/sesal/protocolo_diabetes_tipo2_primer_nivel.pdf",
+          "author": "Secretaría de Salud de Honduras",
+          "format": "HTML"
+        },
+        {
+          "id": "sesal_002",
+          "title": "Protocolo de Atención Clínica para Hipertensión Arterial en Primer Nivel",
+          "year": 2023,
+          "language": "es",
+          "link": "https://honduras.bvsalud.org/?page_id=2025",
+          "location_in_pc": "data/pdfs/sesal/protocolo_hipertension_primer_nivel.pdf",
+          "author": "Secretaría de Salud de Honduras",
+          "format": "HTML"
+        }
+      ]
+    },
+    "cdc": {
+      "full_name": "Centers for Disease Control and Prevention",
+      "acronym": "CDC",
+      "english_name": "Centers for Disease Control and Prevention",
+      "country": "Estados Unidos",
+      "website": "https://www.cdc.gov",
+      "type": "Agencia Federal de Salud Pública",
+      "documents": [
+        {
+          "id": "cdc_001",
+          "title": "Diabetes Prevention Recognition Program Standards",
+          "year": 2024,
+          "language": "en",
+          "link": "https://www.cdc.gov/diabetes-prevention/media/pdfs/legacy/dprp-standards.pdf",
+          "location_in_pc": "data/pdfs/cdc/diabetes_prevention_recognition_program_standards.pdf",
+          "author": "Centers for Disease Control and Prevention",
+          "format": "PDF"
+        },
+        {
+          "id": "cdc_002",
+          "title": "On Your Way to Preventing Type 2 Diabetes",
+          "year": 2024,
+          "language": "en",
+          "link": "https://www.cdc.gov/diabetes/pdfs/prevent/On-your-way-to-preventing-type-2-diabetes.pdf",
+          "location_in_pc": "data/pdfs/cdc/on_your_way_preventing_type2_diabetes.pdf",
+          "author": "Centers for Disease Control and Prevention",
+          "format": "PDF"
+        },
+        {
+          "id": "cdc_003",
+          "title": "National Diabetes Fact Sheet",
+          "year": 2011,
+          "language": "en",
+          "link": "https://stacks.cdc.gov/view/cdc/13329",
+          "location_in_pc": "data/pdfs/cdc/national_diabetes_fact_sheet_2011.pdf",
+          "author": "CDC Division of Diabetes Translation",
+          "format": "PDF"
+        },
+        {
+          "id": "cdc_004",
+          "title": "National Diabetes Prevention Program Curriculum",
+          "year": 2016,
+          "language": "en",
+          "link": "https://stacks.cdc.gov/view/cdc/76140",
+          "location_in_pc": "data/pdfs/cdc/ndpp_curriculum_sessions_1_16.pdf",
+          "author": "National Diabetes Prevention Program",
+          "format": "PDF"
+        }
+      ]
+    },
+    "nih": {
+      "full_name": "National Institutes of Health",
+      "acronym": "NIH",
+      "english_name": "National Institutes of Health",
+      "country": "Estados Unidos",
+      "website": "https://www.nih.gov",
+      "type": "Agencia Federal de Investigación Médica",
+      "documents": [
+        {
+          "id": "nih_001",
+          "title": "Prevention of Chronic Disease by Means of Diet and Lifestyle Changes",
+          "year": 2006,
+          "language": "en",
+          "link": "https://www.ncbi.nlm.nih.gov/books/NBK11795/",
+          "location_in_pc": "data/pdfs/nih/Bookshelf_NBK11795.pdf",
+          "author": "NCBI Bookshelf",
+          "format": "PDF"
+        },
+        {
+          "id": "nih_002",
+          "title": "Diet and Health: Implications for Reducing Chronic Disease Risk",
+          "year": 1989,
+          "language": "en",
+          "link": "https://www.ncbi.nlm.nih.gov/books/NBK218743/",
+          "location_in_pc": "data/pdfs/nih/Bookshelf_NBK218743.pdf",
+          "author": "National Research Council",
+          "format": "PDF"
+        },
+        {
+          "id": "nih_003",
+          "title": "Nutrition During Pregnancy",
+          "year": 1990,
+          "language": "en",
+          "link": "https://www.ncbi.nlm.nih.gov/books/NBK235261/",
+          "location_in_pc": "data/pdfs/nih/Bookshelf_NBK235261.pdf",
+          "author": "Institute of Medicine",
+          "format": "PDF"
+        }
+      ]
+    },
+    "aesan": {
+      "full_name": "Agencia Española de Seguridad Alimentaria y Nutrición",
+      "acronym": "AESAN",
+      "english_name": "Spanish Agency for Food Safety and Nutrition",
+      "country": "España",
+      "website": "https://www.aesan.gob.es",
+      "type": "Agencia Nacional de Seguridad Alimentaria",
+      "documents": [
+        {
+          "id": "aesan_001",
+          "title": "Recomendaciones Dietéticas Saludables y Sostenibles para la Población Española",
+          "year": 2020,
+          "language": "es",
+          "link": "https://www.aesan.gob.es/AECOSAN/docs/documentos/seguridad_alimentaria/evaluacion_riesgos/informes_comite/RECOMENDACIONES_DIETETICAS.pdf",
+          "location_in_pc": "data/pdfs/aesan/recomendaciones_dieteticas_espana_2020.pdf",
+          "author": "Comité Científico de la AESAN",
+          "pages": 58,
+          "format": "PDF"
+        }
+      ]
+    },
+    "minsal_ecuador": {
+      "full_name": "Ministerio de Salud Pública del Ecuador",
+      "acronym": "MSP Ecuador",
+      "english_name": "Ministry of Public Health of Ecuador",
+      "country": "Ecuador",
+      "website": "https://www.salud.gob.ec",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "minsal_ec_001",
+          "title": "Hipertensión Arterial: Guía de Práctica Clínica (GPC)",
+          "year": 2019,
+          "language": "es",
+          "link": "https://www.salud.gob.ec/wp-content/uploads/2019/06/gpc_hta192019.pdf",
+          "location_in_pc": "data/pdfs/minsal_ecuador/gpc_hipertension_2019.pdf",
+          "author": "Ministerio de Salud Pública del Ecuador",
+          "format": "PDF"
+        }
+      ]
+    },
+    "minsal_argentina": {
+      "full_name": "Ministerio de Salud de Argentina",
+      "acronym": "MSAL Argentina",
+      "english_name": "Ministry of Health of Argentina",
+      "country": "Argentina",
+      "website": "https://www.argentina.gob.ar/salud",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "minsal_ar_001",
+          "title": "Guía de Práctica Clínica Nacional sobre Prevención, Diagnóstico y Tratamiento de la Diabetes Mellitus Tipo 2",
+          "year": 2019,
+          "language": "es",
+          "link": "https://extranet.who.int/ncdccs/Data/ARG_D1_guia-prevencion-diagnostico-tratamiento-diabetes-mellitus-tipo-2.pdf",
+          "location_in_pc": "data/pdfs/minsal_argentina/gpc_diabetes_tipo2.pdf",
+          "author": "Ministerio de Salud de Argentina",
+          "format": "PDF"
+        },
+        {
+          "id": "minsal_ar_002",
+          "title": "Abordaje Integral de Personas con Enfermedades Crónicas No Transmisibles",
+          "year": 2016,
+          "language": "es",
+          "link": "https://iah.msal.gov.ar/doc/Documento147.pdf",
+          "location_in_pc": "data/pdfs/minsal_argentina/abordaje_integral_ent.pdf",
+          "author": "Ministerio de Salud de la Nación Argentina",
+          "format": "PDF"
+        }
+      ]
+    },
+    "minsal_paraguay": {
+      "full_name": "Ministerio de Salud Pública y Bienestar Social de Paraguay",
+      "acronym": "MSPyBS Paraguay",
+      "english_name": "Ministry of Public Health and Social Welfare of Paraguay",
+      "country": "Paraguay",
+      "website": "https://www.mspbs.gov.py",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "minsal_py_001",
+          "title": "Guía Práctica para el Tratamiento de la Diabetes Mellitus",
+          "year": 2015,
+          "language": "es",
+          "link": "https://extranet.who.int/ncdccs/Data/PRY_D1_Guia_tratamiento_Diabetes.pdf",
+          "location_in_pc": "data/pdfs/minsal_paraguay/guia_tratamiento_diabetes.pdf",
+          "author": "Ministerio de Salud Pública y Bienestar Social - Paraguay",
+          "format": "PDF"
+        }
+      ]
+    },
+    "minsal_guatemala": {
+      "full_name": "Ministerio de Salud Pública de Guatemala",
+      "acronym": "MSPAS Guatemala",
+      "english_name": "Ministry of Public Health of Guatemala",
+      "country": "Guatemala",
+      "website": "https://www.mspas.gob.gt",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "minsal_gt_001",
+          "title": "Guía para la Prevención, Detección, Evaluación y Tratamiento de las Enfermedades Crónicas No Transmisibles",
+          "year": 2011,
+          "language": "es",
+          "link": "https://extranet.who.int/ncdccs/Data/GTM_D1_Gu%C3%ADas%20de%20Atenci%C3%B3n%20Enfermedades%20Cr%C3%B3nicas%202011.pdf",
+          "location_in_pc": "data/pdfs/minsal_guatemala/guia_ent_2011.pdf",
+          "author": "Ministerio de Salud Pública y Asistencia Social de Guatemala",
+          "format": "PDF"
+        }
+      ]
+    },
+    "minsal_espana": {
+      "full_name": "Ministerio de Sanidad de España",
+      "acronym": "MSCBS España",
+      "english_name": "Ministry of Health of Spain",
+      "country": "España",
+      "website": "https://www.sanidad.gob.es",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "minsal_es_001",
+          "title": "Estrategia en Diabetes del Sistema Nacional de Salud - Actualización",
+          "year": 2020,
+          "language": "es",
+          "link": "https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/diabetes/docs/Estrategia_en_diabetes_del_SNS_Accesible.pdf",
+          "location_in_pc": "data/pdfs/minsal_espana/estrategia_diabetes_sns.pdf",
+          "author": "Ministerio de Sanidad de España",
+          "format": "PDF"
+        }
+      ]
+    },
+    "minsal_chile": {
+      "full_name": "Ministerio de Salud de Chile",
+      "acronym": "MINSAL Chile",
+      "english_name": "Ministry of Health of Chile",
+      "country": "Chile",
+      "website": "https://www.minsal.cl",
+      "type": "Ministerio de Salud Nacional",
+      "documents": [
+        {
+          "id": "minsal_cl_001",
+          "title": "Orientación Técnica Programa de Salud Cardiovascular",
+          "year": 2016,
+          "language": "es",
+          "link": "https://www.saludtarapaca.gob.cl/wp-content/uploads/2023/10/Orientaciones-Tecnicas-Programa-Salud-Cardio-Vascular.pdf",
+          "location_in_pc": "data/pdfs/minsal_chile/orientacion_tecnica_pscv_2016.pdf",
+          "author": "Ministerio de Salud de Chile",
+          "format": "PDF"
+        }
+      ]
+    },
+    "cesni": {
+      "full_name": "Centro de Estudios sobre Nutrición Infantil",
+      "acronym": "CESNI",
+      "english_name": "Center for Studies on Infant Nutrition",
+      "country": "Argentina",
+      "website": "https://www.cesni.org.ar",
+      "type": "Organización de Investigación",
+      "documents": [
+        {
+          "id": "cesni_001",
+          "title": "Educación Alimentaria y Nutricional - Libro para el Docente",
+          "year": 2017,
+          "language": "es",
+          "link": "https://cesni-biblioteca.org/archivos/Libro%20docente%202.pdf",
+          "location_in_pc": "data/pdfs/cesni/educacion_alimentaria_nutricional_docente.pdf",
+          "author": "CESNI",
+          "format": "PDF"
+        }
+      ]
+    },
+    "usda": {
+      "full_name": "U.S. Department of Agriculture",
+      "acronym": "USDA",
+      "english_name": "U.S. Department of Agriculture",
+      "country": "Estados Unidos",
+      "website": "https://www.usda.gov",
+      "type": "Departamento Federal",
+      "documents": [
+        {
+          "id": "usda_001",
+          "title": "Dietary Guidelines for Americans 2020-2025",
+          "year": 2020,
+          "language": "en",
+          "link": "https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf",
+          "location_in_pc": "data/pdfs/usda/dietary_guidelines_americans_2020_2025.pdf",
+          "author": "U.S. Department of Agriculture and U.S. Department of Health and Human Services",
+          "format": "PDF",
+          "pages": 164
+        }
+      ]
+    },
+    "ada": {
+      "full_name": "American Diabetes Association",
+      "acronym": "ADA",
+      "english_name": "American Diabetes Association",
+      "country": "Estados Unidos",
+      "website": "https://www.diabetes.org",
+      "type": "Asociación Profesional",
+      "documents": [
+        {
+          "id": "ada_001",
+          "title": "Standards of Medical Care in Diabetes 2025",
+          "year": 2025,
+          "language": "en",
+          "link": "https://diabetesjournals.org/care/issue/48/Supplement_1",
+          "location_in_pc": "data/pdfs/ada/standards_medical_care_diabetes_2025.pdf",
+          "author": "American Diabetes Association",
+          "format": "PDF"
+        }
+      ]
+    },
+    "ucm": {
+      "full_name": "Universidad Complutense de Madrid",
+      "acronym": "UCM",
+      "english_name": "Complutense University of Madrid",
+      "country": "España",
+      "website": "https://www.ucm.es",
+      "type": "Universidad",
+      "documents": [
+        {
+          "id": "ucm_001",
+          "title": "Manual de Nutrición y Dietética",
+          "year": 2013,
+          "language": "es",
+          "link": "https://eprints.ucm.es/22755/1/Manual-nutricion-dietetica-CARBAJAL.pdf",
+          "location_in_pc": "data/pdfs/universidades/ucm/ucm_manual_nutricion_dietetica.pdf",
+          "author": "Ángeles Carbajal Azcona",
+          "format": "PDF",
+          "license": "Creative Commons"
+        }
+      ]
+    },
+    "universidad_murcia": {
+      "full_name": "Universidad de Murcia",
+      "acronym": "UM",
+      "english_name": "University of Murcia",
+      "country": "España",
+      "website": "https://www.um.es",
+      "type": "Universidad",
+      "documents": [
+        {
+          "id": "um_001",
+          "title": "La Nutrición es con-ciencia",
+          "year": 2011,
+          "language": "es",
+          "link": "https://www.um.es/lafem/DivulgacionCientifica/Libros/2011-La%20nutricion-completo.pdf",
+          "location_in_pc": "data/pdfs/universidades/um/um_nutricion_conciencia.pdf",
+          "author": "José Antonio Lozano Teruel",
+          "format": "PDF"
+        }
+      ]
+    },
+    "senc": {
+      "full_name": "Sociedad Española de Nutrición Comunitaria",
+      "acronym": "SENC",
+      "english_name": "Spanish Society of Community Nutrition",
+      "country": "España",
+      "website": "https://www.nutricioncomunitaria.org",
+      "type": "Sociedad Científica",
+      "documents": [
+        {
+          "id": "senc_001",
+          "title": "Guía de Alimentación Saludable",
+          "year": 2022,
+          "language": "es",
+          "link": "https://www.nutricioncomunitaria.org",
+          "location_in_pc": "data/pdfs/senc/Guía de Alimentación Saludable Sociedad Española de Nutrición Comunitaria.pdf",
+          "author": "Sociedad Española de Nutrición Comunitaria",
+          "pages": 105,
+          "format": "PDF"
+        }
+      ]
+    },
+    "aep": {
+      "full_name": "Asociación Española de Pediatría",
+      "acronym": "AEP",
+      "english_name": "Spanish Association of Pediatrics",
+      "country": "España",
+      "website": "https://www.aeped.es",
+      "type": "Asociación Profesional",
+      "documents": [
+        {
+          "id": "aep_001",
+          "title": "Manual de Nutrición Pediátrica",
+          "year": 2020,
+          "language": "es",
+          "link": "https://www.aeped.es",
+          "location_in_pc": "data/pdfs/universidades/aep/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP.pdf",
+          "author": "Comité de Nutrición de la AEP",
+          "pages": 540,
+          "format": "PDF"
+        }
+      ]
+    },
+    "hcuv": {
+      "full_name": "Hospital Clínico Universitario de Valencia",
+      "acronym": "HCUV",
+      "english_name": "Clinical University Hospital of Valencia",
+      "country": "España",
+      "website": "https://www.incliva.es",
+      "type": "Hospital Universitario",
+      "documents": [
+        {
+          "id": "hcuv_001",
+          "title": "Manual de Nutrición Clínica",
+          "year": 2018,
+          "language": "es",
+          "link": "https://wwaw.incliva.es",
+          "location_in_pc": "data/pdfs/universidades/hospital_valencia/Manual de Nutrición Clínica Hospital Clínico Universitario de Valencia.pdf",
+          "author": "Hospital Clínico Universitario de Valencia",
+          "pages": 244,
+          "format": "PDF"
+        }
+      ]
+    },
+    "acpa": {
+      "full_name": "Academy of Culinary Professionals of the Americas",
+      "acronym": "ACPA",
+      "english_name": "Academy of Culinary Professionals of the Americas",
+      "country": "Internacional",
+      "website": "https://www.academiaculinaria.org",
+      "type": "Institución Educativa",
+      "documents": [
+        {
+          "id": "acpa_001",
+          "title": "Nutrición y Dietética",
+          "year": 2015,
+          "language": "es",
+          "link": "https://www.academiaculinaria.org",
+          "location_in_pc": "data/pdfs/acpa/Nutrición y Dietética Gustavo Graciano.pdf",
+          "author": "Chef Gustavo Graciano",
+          "pages": 233,
+          "format": "PDF"
+        }
+      ]
+    }
+  }
+}
