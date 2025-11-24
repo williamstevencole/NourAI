@@ -20,7 +20,7 @@ export function ChatHeader({ onOpenClinicalData }: ChatHeaderProps) {
             <NutriaAvatar size={56} />
           </div>
           <div>
-            <h1 className="text-base font-semibold text-foreground tracking-tight">NutriRAG</h1>
+            <h1 className="text-base font-semibold text-foreground tracking-tight">Nourai</h1>
             <p className="text-xs text-muted-foreground/70 leading-tight">
               Asistente nutricional basado en evidencia
             </p>
