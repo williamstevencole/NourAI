@@ -22,7 +22,7 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
 
       {/* Título y descripción */}
       <h2 className="text-3xl font-semibold text-center mb-4 text-foreground tracking-tight">
-        Bienvenido a NutriRAG
+        Bienvenido a Nourai
       </h2>
       <p className="text-muted-foreground text-center max-w-lg mb-12 text-[15px] leading-relaxed">
         Tu asistente educativo nutricional para el tratamiento y prevención de enfermedades crónicas basado en evidencia científica.
