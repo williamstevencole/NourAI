@@ -8,7 +8,7 @@ interface NutriaAvatarProps {
 export const NutriaAvatar = memo(function NutriaAvatar({ size = 40, className = '' }: NutriaAvatarProps) {
   return (
     <img
-      src="/leaf-logo-vector.avif"
+      src="/nutria.png"
       alt="Logo"
       width={size}
       height={size}

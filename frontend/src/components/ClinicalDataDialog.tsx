@@ -59,6 +59,8 @@ export function ClinicalDataDialog({
     initialData?.medications?.join(', ') || ''
   );
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   // Update form when initialData changes
   useEffect(() => {
     if (initialData) {
@@ -70,6 +72,48 @@ export function ClinicalDataDialog({
   }, [initialData]);
 
   const handleSubmit = () => {
+    const newErrors: Record<string, string> = {};
+
+    // Validate age
+    if (formData.age !== undefined && (isNaN(formData.age) || formData.age <= 0 || formData.age >= 150)) {
+      newErrors.age = 'La edad debe ser un número entre 1 y 149.';
+    }
+
+    // Validate weight
+    if (formData.weight !== undefined && (isNaN(formData.weight) || formData.weight <= 0)) {
+      newErrors.weight = 'El peso debe ser un número mayor a 0.';
+    }
+
+    // Validate height
+    if (formData.height !== undefined && (isNaN(formData.height) || formData.height <= 0)) {
+      newErrors.height = 'La altura debe ser un número mayor a 0.';
+    }
+
+    // Validate gender
+    const validGenders = ['male', 'female', 'other'];
+    if (formData.gender !== undefined && !validGenders.includes(formData.gender)) {
+      newErrors.gender = 'Selecciona un sexo válido.';
+    }
+
+    // Validate activity_level
+    const validActivities = ['sedentary', 'light', 'moderate', 'active', 'very_active'];
+    if (formData.activity_level !== undefined && !validActivities.includes(formData.activity_level)) {
+      newErrors.activity_level = 'Selecciona un nivel de actividad válido.';
+    }
+
+    // Validate diet_type
+    const validDiets = ['omnivore', 'vegetarian', 'vegan', 'pescetarian', 'keto', 'other'];
+    if (formData.diet_type !== undefined && !validDiets.includes(formData.diet_type)) {
+      newErrors.diet_type = 'Selecciona un tipo de dieta válido.';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+
     const data: ClinicalData = {
       ...formData,
       conditions: conditionsInput
@@ -109,22 +153,23 @@ export function ClinicalDataDialog({
                 type="number"
                 placeholder="Ej: 30"
                 value={formData.age || ''}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    age: e.target.value ? parseInt(e.target.value) : undefined,
-                  })
-                }
+                onChange={(e) => {
+                  const value = e.target.value ? parseInt(e.target.value) : undefined;
+                  setFormData({ ...formData, age: value });
+                  if (errors.age) setErrors(prev => ({ ...prev, age: undefined }));
+                }}
               />
+              {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="gender">Sexo</Label>
               <Select
                 value={formData.gender}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, gender: value })
-                }
+                onValueChange={(value) => {
+                  setFormData({ ...formData, gender: value });
+                  if (errors.gender) setErrors(prev => ({ ...prev, gender: undefined }));
+                }}
               >
                 <SelectTrigger id="gender">
                   <SelectValue placeholder="Selecciona" />
@@ -135,6 +180,7 @@ export function ClinicalDataDialog({
                   <SelectItem value="other">Otro</SelectItem>
                 </SelectContent>
               </Select>
+              {errors.gender && <p className="text-red-500 text-sm mt-1">{errors.gender}</p>}
             </div>
           </div>
 
@@ -146,13 +192,13 @@ export function ClinicalDataDialog({
                 type="number"
                 placeholder="Ej: 70"
                 value={formData.weight || ''}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    weight: e.target.value ? parseFloat(e.target.value) : undefined,
-                  })
-                }
+                onChange={(e) => {
+                  const value = e.target.value ? parseFloat(e.target.value) : undefined;
+                  setFormData({ ...formData, weight: value });
+                  if (errors.weight) setErrors(prev => ({ ...prev, weight: undefined }));
+                }}
               />
+              {errors.weight && <p className="text-red-500 text-sm mt-1">{errors.weight}</p>}
             </div>
 
             <div className="space-y-2">
@@ -162,13 +208,13 @@ export function ClinicalDataDialog({
                 type="number"
                 placeholder="Ej: 170"
                 value={formData.height || ''}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    height: e.target.value ? parseFloat(e.target.value) : undefined,
-                  })
-                }
+                onChange={(e) => {
+                  const value = e.target.value ? parseFloat(e.target.value) : undefined;
+                  setFormData({ ...formData, height: value });
+                  if (errors.height) setErrors(prev => ({ ...prev, height: undefined }));
+                }}
               />
+              {errors.height && <p className="text-red-500 text-sm mt-1">{errors.height}</p>}
             </div>
           </div>
 
@@ -176,9 +222,10 @@ export function ClinicalDataDialog({
             <Label htmlFor="activity_level">Nivel de actividad física</Label>
             <Select
               value={formData.activity_level}
-              onValueChange={(value) =>
-                setFormData({ ...formData, activity_level: value })
-              }
+              onValueChange={(value) => {
+                setFormData({ ...formData, activity_level: value });
+                if (errors.activity_level) setErrors(prev => ({ ...prev, activity_level: undefined }));
+              }}
             >
               <SelectTrigger id="activity_level">
                 <SelectValue placeholder="Selecciona tu nivel" />
@@ -191,15 +238,17 @@ export function ClinicalDataDialog({
                 <SelectItem value="very_active">Muy activa (atleta)</SelectItem>
               </SelectContent>
             </Select>
+            {errors.activity_level && <p className="text-red-500 text-sm mt-1">{errors.activity_level}</p>}
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="diet_type">Tipo de dieta</Label>
             <Select
               value={formData.diet_type}
-              onValueChange={(value) =>
-                setFormData({ ...formData, diet_type: value })
-              }
+              onValueChange={(value) => {
+                setFormData({ ...formData, diet_type: value });
+                if (errors.diet_type) setErrors(prev => ({ ...prev, diet_type: undefined }));
+              }}
             >
               <SelectTrigger id="diet_type">
                 <SelectValue placeholder="Selecciona tu dieta" />
@@ -213,6 +262,7 @@ export function ClinicalDataDialog({
                 <SelectItem value="other">Otra</SelectItem>
               </SelectContent>
             </Select>
+            {errors.diet_type && <p className="text-red-500 text-sm mt-1">{errors.diet_type}</p>}
           </div>
 
           <div className="space-y-2">
