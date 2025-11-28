@@ -62,7 +62,7 @@ export function Composer({ onSendMessage, disabled }: ComposerProps) {
         </div>
 
         <p className="text-xs text-muted-foreground/60 mt-3 text-center">
-          NutriRAG puede cometer errores. Verifica información importante.
+          Nourai puede cometer errores. Verifica información importante.
         </p>
       </div>
     </div>
