@@ -1,0 +1,211 @@
+{
+  "metadata": {
+    "evaluation_date": "2025-11-29 18:54:37",
+    "total_test_cases": 6,
+    "successful_cases": 6,
+    "failed_cases": 0,
+    "coverage_percentage": 100.0,
+    "average_latency_seconds": 20.498
+  },
+  "ragas_metrics": {
+    "faithfulness": 0.7534271284271283,
+    "answer_relevancy": 0.6312943634555238,
+    "context_recall": 0.8055555555555555,
+    "context_precision": 0.7615740740590472,
+    "answer_correctness": 0.5315370595721098
+  },
+  "additional_metrics": {
+    "precision": 0.281,
+    "recall": 0.478,
+    "bleu": {
+      "bleu_1": 0.225,
+      "bleu_2": 0.146,
+      "bleu_3": 0.107,
+      "bleu_4": 0.074,
+      "bleu_avg": 0.138
+    },
+    "rouge": {
+      "rouge_1_precision": 0.414,
+      "rouge_1_recall": 0.49,
+      "rouge_1_f1": 0.368,
+      "rouge_2_precision": 0.234,
+      "rouge_2_recall": 0.243,
+      "rouge_2_f1": 0.189,
+      "rouge_l_precision": 0.296,
+      "rouge_l_recall": 0.346,
+      "rouge_l_f1": 0.253
+    }
+  },
+  "detailed_results": [
+    {
+      "test_id": "test_001",
+      "category": "diabetes",
+      "difficulty": "medium",
+      "question": "Cuantas personas se esperan que padezcan de diabetes en el año 2030 en America Latina?",
+      "answer": "Según la información disponible, se estima que en América Latina, el número de personas con diabetes mellitus aumentará en un 50% entre 2023 y 2030. En el año 2007, se estimaba que había 15 millones de personas con diabetes en Latinoamérica, lo que significa que el aumento previsto se traducirá en una cifra significativamente mayor.\n\nBasándome en las estimaciones del año 2007 y el incremento previsto, es posible inferir que en el año 2030, la cifra podría superar los 20 millones de personas con diabetes en Latinoamérica. Sin embargo, no se proporciona un número específico para el año 2030.\n\nNota: Esta información educativa se basa en guías oficiales de nutrición. Consulta con un profesional de salud certificado para asesoramiento médico personalizado.",
+      "ground_truth": "En el año 2030, se espera que aproximadamente 32,9 millones de personas en America Latina padezcan de diabetes.",
+      "latency_seconds": 31.15285897254944,
+      "retrieved_docs": [
+        "fao_001",
+        "minsal_es_001",
+        "minsal_gt_001",
+        "minsal_ar_001",
+        "oms_005",
+        "minsal_ar_001",
+        "minsal_ar_001",
+        "minsal_ar_001",
+        "minsal_es_001",
+        "minsal_es_001"
+      ],
+      "relevant_docs": [
+        "fao_001",
+        "minsal_espana_001",
+        "minsal_guatemala_001",
+        "sesal_001",
+        "minsal_argentina_002"
+      ],
+      "precision": 0.2,
+      "recall": 0.2
+    },
+    {
+      "test_id": "test_002",
+      "category": "hipertension",
+      "difficulty": "medium",
+      "question": "¿Que tipo de medicamentos pueden llegar a alterar la presion arterial?",
+      "answer": "Según el contexto científico proporcionado, los medicamentos que pueden alterar la presión arterial incluyen:\n\n* Drogas para pérdida de peso\n* Descongestionantes nasales\n* Beta bloqueantes\n* Diuréticos tiazídicos\n* Bloqueantes cálcicos\n* Otros fármacos antihipertensivos disponibles en el mercado, como Benazepril, Imidapril, Quinapril, Ramipril, Telmisartán y Olmesartán.\n\nEs importante destacar que algunos de estos medicamentos pueden inducir hipertensión en ciertos pacientes, especialmente aquellos que toman ciertas drogas anticancerígenas o psiquiátricas.",
+      "ground_truth": "Los medicamentos que pueden llegar a alterar la presion arterial son: Anticonceptivos (especialmente los que contienen al menos 50 μg de estrógeno y 1-4 mg de progestina), simpaticomimeticos (drogas para pérdida de peso, descongestionantes nasales), antiinflamatorios no esteroideos (AINEs, particularmente indometacina en uso crónico con posible aumento de 5mmHg), corticosteroides, fármacos inmunosupresores, drogas anticancerígenas, drogas estimulantes (anfetaminas, cocaína, éxtasis), y drogas para tratar la deficiencia de atención y trastornos hiperactivos.",
+      "latency_seconds": 17.42496919631958,
+      "retrieved_docs": [
+        "sesal_002",
+        "ops_003",
+        "minsal_ec_001",
+        "minsal_gt_001",
+        "ops_003",
+        "sesal_002",
+        "ops_003",
+        "sesal_002",
+        "sesal_002",
+        "minsal_ar_001"
+      ],
+      "relevant_docs": [
+        "sesal_002",
+        "minsal_ecuador_001",
+        "ops_002"
+      ],
+      "precision": 0.2,
+      "recall": 0.3333333333333333
+    },
+    {
+      "test_id": "test_003",
+      "category": "prevencion_obesidad",
+      "difficulty": "medium",
+      "question": "Cuales son las estrategias generales para prevenir la obesidad en tanto niños como adultos?",
+      "answer": "Según el contexto científico proporcionado, las estrategias generales para prevenir la obesidad en tanto niños como adultos son:\n\n* Promover la lactancia materna exclusiva en los lactantes y niños pequeños.\n* Crear costumbres culinarias sanas en el hogar, con alimentos bajos en grasa y ración controlada.\n* Asegurar la ingesta de micronutrientes necesaria para promover un crecimiento lineal óptimo.\n* Promover un estilo de vida activo en niños y adolescentes.\n* Limitar las horas de televisión y fomentar el consumo de frutas y verduras.\n* Restringir la ingesta de alimentos ricos en energía y pobres en micronutrientes, como aperitivos envasados.\n* Controlar el peso corporal adecuado para edad y talla.\n* No restringir alimentos ni fomentar el consumo de productos \"bajos en calorías o grasa\", a menos que haya una justificación médica o un exceso de peso.\n* Fomentar la actividad física, al menos una hora diaria, y preferiblemente al aire libre.\n* Disminuir la ingesta de azúcares simples y complejos en adolescentes obesos.\n* Evitar el sedentarismo y favorecer el ejercicio físico.\n\nEs importante destacar que estas estrategias deben ser implementadas en conjunto y con supervisión médica, especialmente en casos de sobrepeso o obesidad.",
+      "ground_truth": "Las estrategias para prevenir la obesidad incluyen: En lactantes y niños pequeños: promover la lactancia materna exclusiva, evitar la adición de azúcares y almidones a la leche del biberón, enseñar a las madres a aceptar la capacidad de su hijo para regular el aporte calórico en lugar de alimentarlo hasta que haya acabado el plato, asegurar la ingesta de micronutrientes necesaria para promover un crecimiento lineal óptimo. En niños y adultos: promover un estilo de vida activo, limitar las horas de televisión (por cada hora adicional de visión aumenta el riesgo de sobrepeso y obesidad), fomentar el consumo de frutas y verduras, restringir la ingesta de alimentos ricos en energía y pobres en micronutrientes (aperitivos envasados), restringir la ingesta de refrescos azucarados y bebidas azucaradas.",
+      "latency_seconds": 26.00091004371643,
+      "retrieved_docs": [
+        "oms_005",
+        "aep_001",
+        "oms_005",
+        "aep_001",
+        "ucm_001",
+        "fao_001",
+        "oms_005",
+        "oms_005",
+        "aep_001",
+        "aep_001"
+      ],
+      "relevant_docs": [
+        "oms_005",
+        "aep_001",
+        "fao_002"
+      ],
+      "precision": 0.5,
+      "recall": 0.6666666666666666
+    },
+    {
+      "test_id": "test_004",
+      "category": "alimentacion_saludable",
+      "difficulty": "easy",
+      "question": "¿Cuántas porciones de frutas y verduras se recomienda consumir al día?",
+      "answer": "Según la información disponible, se recomienda consumir al menos 5 porciones de frutas y verduras por día.",
+      "ground_truth": "Se recomienda consumir al menos 5 porciones de frutas y verduras al día (pueden ser 3 raciones de frutas y 2-3 de verduras). Cada porción de fruta puede ser de unos 120 gramos o una pieza mediana (un plátano, una manzana, una pera, una naranja, una rodaja de piña, dos de melón o dos de sandía, o 1/2 taza de fruta picada). Cada porción de verduras se compone de 1/2 taza de verduras cocidas o 1 taza de verduras crudas. Se deben escoger frutas enteras cuando sea posible, incluyendo el consumo de la cáscara, y evitar el consumo de fruta en jugos.",
+      "latency_seconds": 9.58837604522705,
+      "retrieved_docs": [
+        "ops_003",
+        "cesni_001",
+        "cesni_001",
+        "minsal_ec_001",
+        "minsal_ec_001",
+        "minsal_ec_001",
+        "sesal_002",
+        "cesni_001",
+        "sesal_002",
+        "ops_003"
+      ],
+      "relevant_docs": [
+        "minsal_ecuador_001",
+        "aesan_001",
+        "aep_001"
+      ],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "test_id": "test_005",
+      "category": "hidratacion",
+      "difficulty": "easy",
+      "question": "¿Cuánta agua se recomienda consumir diariamente?",
+      "answer": "Según la información disponible, se recomienda consumir al menos 2 litros de líquido (agua de bebida, infusiones, caldos de verduras, zumos de frutas, etc.) diariamente. Sin embargo, también se menciona que esta cantidad puede variar dependiendo de factores como la actividad física y las condiciones climáticas.\n\nEn algunos lugares, se recomienda consumir 1,5 a 2,5 litros de agua al día, lo que equivale a al menos 8 vasos de agua. Sin embargo, no hay una recomendación única y universal para todos los individuos.\n\nEn resumen, la cantidad exacta de agua que se recomienda consumir diariamente puede variar dependiendo del contexto y las condiciones individuales. La mejor forma de mantenerse hidratado es beber al menos 2 litros de líquido al día.",
+      "ground_truth": "Es importante consumir 2 litros de agua por día, lo que equivale aproximadamente a 6-8 vasos de agua al día. El agua puede beberse como tal o a través de caldos, sopas, infusiones, jugos y toda preparación que contenga buena cantidad de agua. Es importante vigilar la ingesta de líquidos para evitar la deshidratación, y los ancianos deben beber agua a intervalos regulares aunque no tengan sed. El agua de consumo debe ser limpia y potable.",
+      "latency_seconds": 18.342535972595215,
+      "retrieved_docs": [
+        "cesni_001",
+        "ucm_001",
+        "ucm_001",
+        "fao_001",
+        "ucm_001",
+        "um_001",
+        "cesni_001",
+        "ucm_001",
+        "ops_003",
+        "acpa_001"
+      ],
+      "relevant_docs": [
+        "cesni_001",
+        "fao_001",
+        "ucm_001"
+      ],
+      "precision": 0.5,
+      "recall": 1.0
+    },
+    {
+      "test_id": "test_006",
+      "category": "clasificacion_nutricional",
+      "difficulty": "medium",
+      "question": "¿Cómo se clasifica el sobrepeso y la obesidad según el Índice de Masa Corporal (IMC)?",
+      "answer": "Según el contexto proporcionado, el sobrepeso se considera un IMC superior al percentil 85 (+1 y +2 DE), mientras que la obesidad se define como un IMC igual o superior a 30.\n\nLa clasificación de riesgo según el IMC y CC (OMS) es la siguiente:\n\n* Hombres: CC 94-102 cm, IMC < 25\n* Mujeres: CC 80-88 cm, IMC < 25\n\nEn cuanto a la clasificación de la obesidad, se establece como sigue:\n\n* Obesidad grado 1: IMC entre 30 y 34,9\n* Obesidad grado 2: IMC entre 35 y 39,9\n* Obesidad grado 3: IMC superior a 40\n\nEs importante destacar que la obesidad se clasifica en tres categorías según el IMC, lo que permite una mejor comprensión de los riesgos asociados con cada nivel de adiposidad.",
+      "ground_truth": "Según la clasificación de la OMS, el sobrepeso se define cuando el IMC está entre 25.0 y 29.9 kg/m² (también llamado preobesidad). La obesidad se clasifica cuando el IMC es igual o mayor a 30 kg/m², subdividiéndose en: Obesidad tipo I (IMC 30.0-34.9) con riesgo de comorbilidad moderado, Obesidad tipo II (IMC 35.0-39.9) con riesgo grave, y Obesidad tipo III (IMC igual o mayor a 40.0) con riesgo muy grave. El intervalo de IMC normal es de 18.5-24.9 kg/m². Estos valores son independientes de la edad e iguales para ambos sexos.",
+      "latency_seconds": 20.47834873199463,
+      "retrieved_docs": [
+        "minsal_es_001",
+        "oms_005",
+        "minsal_ec_001",
+        "aep_001",
+        "minsal_es_001",
+        "ops_003",
+        "minsal_es_001",
+        "ucm_001",
+        "acpa_001",
+        "ucm_001"
+      ],
+      "relevant_docs": [
+        "oms_005",
+        "ucm_001",
+        "um_001"
+      ],
+      "precision": 0.2857142857142857,
+      "recall": 0.6666666666666666
+    }
+  ]
+}
