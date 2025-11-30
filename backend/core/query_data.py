@@ -9,7 +9,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
 
-from config import CHROMA_PATH, LLM_MODEL, TOP_K, SIMILARITY_THRESHOLD, SYSTEM_PROMPT, PROMPT_TEMPLATE
+from config import CHROMA_PATH, LLM_MODEL, TOP_K, SIMILARITY_THRESHOLD, SYSTEM_PROMPT, PROMPT_TEMPLATE, TEMPERATURE
 from utils.embedding_function import get_embedding_function
 
 
@@ -50,7 +50,7 @@ def build_clinical_context(clinical_data: dict) -> str:
     return f"\n\nINFORMACIÓN DEL PACIENTE:\n" + "\n".join(parts) + "\n"
 
 
-def _expand_diet_query(query_text: str) -> str:
+def expand_diet_query(query_text: str) -> str:
     """Expand generic diet questions with additional keywords."""
     generic_keywords = ["dieta", "alimentación", "plan de comidas", "que comer", "qué comer"]
 
@@ -60,7 +60,7 @@ def _expand_diet_query(query_text: str) -> str:
     return query_text
 
 
-def _filter_by_similarity(results: list) -> list:
+def filter_by_similarity(results: list) -> list:
     """Filter search results by similarity threshold."""
     filtered = []
     for doc, distance in results:
@@ -70,7 +70,7 @@ def _filter_by_similarity(results: list) -> list:
     return filtered
 
 
-def _extract_source_info(doc, score: float) -> dict:
+def extract_source_info(doc, score: float) -> dict:
     """Extract source metadata from a document."""
     return {
         "title": doc.metadata.get("title", doc.metadata.get("filename", "Unknown")),
@@ -94,7 +94,7 @@ def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -
     )
 
     # Search the database
-    search_query = _expand_diet_query(query_text)
+    search_query = expand_diet_query(query_text)
     results = db.similarity_search_with_score(search_query, k=top_k)
 
     if not results:
@@ -104,7 +104,7 @@ def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -
         }
 
     # Filter by similarity threshold
-    filtered_results = _filter_by_similarity(results)
+    filtered_results = filter_by_similarity(results)
 
     if not filtered_results:
         return {
@@ -112,7 +112,7 @@ def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -
             "sources": []
         }
 
-    # Build context from documents
+    # Build context from filtered documents
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _ in filtered_results])
 
     clinical_context = build_clinical_context(clinical_data)
@@ -120,11 +120,11 @@ def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -
     prompt = prompt_template.format(context=context_text, question=query_text)
     full_prompt = f"{SYSTEM_PROMPT}{clinical_context}\n\n{prompt}"
 
-    model = Ollama(model=LLM_MODEL)
+    model = Ollama(model=LLM_MODEL, temperature=TEMPERATURE)
     response_text = model.invoke(full_prompt)
 
 
-    sources = [_extract_source_info(doc, score) for doc, score in filtered_results]
+    sources = [extract_source_info(doc, score) for doc, score in filtered_results]
 
     return {
         "answer": response_text,

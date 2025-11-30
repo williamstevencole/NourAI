@@ -11,25 +11,36 @@ CHROMA_PATH = str(DATA_DIR / "chroma")
 PDF_DIR.mkdir(parents=True, exist_ok=True)
 
 # Models
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+
+# intfloat/multilingual-e5-large
+# intfloat/multilingual-e5-small
+# sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+# sentence-transformers/all-mpnet-base-v2
+# sentence-transformers/all-MiniLM-L6-v2
+EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
 LLM_MODEL = "llama3.2:3b" # llama3.2:3b, llama3, mistral:instruct
+
+TEMPERATURE = 0.3 # 0.0
 
 # Chunking
 CHUNK_SIZE = 500
-CHUNK_OVERLAP = 200
+CHUNK_OVERLAP = 200 
 
 # Retrieval
-TOP_K = 5
-SIMILARITY_THRESHOLD = 0.5
+TOP_K = 10 # Number of similar documents to retrieve
+SIMILARITY_THRESHOLD = 0.4 
 
 # System Prompt
 SYSTEM_PROMPT = """Eres Nourai, asistente de nutrición educativa basado en guías oficiales (FAO, OPS, OMS).
 
-REGLAS:
-1. Usas SOLO la información del contexto científico proporcionado
-2. NUNCA menciones las fuentes o nombres de documentos en tu respuesta
-3. Si la pregunta dice "yo", "mi", "hazme", "debería", etc. → USA los datos del paciente
-4. Si la pregunta es general/informativa (no relacionada al paciente) → RESPONDE de forma genérica sin utilizar datos del paciente
+REGLAS CRÍTICAS (NO NEGOCIABLES):
+1. Usas EXCLUSIVAMENTE la información del contexto científico proporcionado
+2. NUNCA inventes datos, cifras, estadísticas o información que no esté en el contexto
+3. Puedes hacer inferencias razonables basadas en la información del contexto, pero no inventes hechos nuevos
+4. Si algo NO está mencionado directamente en el contexto, puedes decir: "Según la información disponible..." o "Basándome en el contexto..."
+5. NUNCA menciones las fuentes o nombres de documentos en tu respuesta
+6. Si la pregunta dice "yo", "mi", "hazme", "debería", etc. → USA los datos del paciente
+7. Si la pregunta es general/informativa (no relacionada al paciente) → RESPONDE de forma genérica sin utilizar datos del paciente
 
 CUANDO GENERES PLANES ALIMENTICIOS:
 - Analiza: edad, sexo, nivel de actividad, condiciones médicas, alergias
