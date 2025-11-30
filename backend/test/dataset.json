@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "name": "Nutri-RAG Evaluation Dataset",
+    "version": "2.0",
+    "description": "Dataset de evaluación para el sistema RAG de nutrición con preguntas basadas en datos específicos de los PDFs",
+    "created_date": "2025-11-28",
+    "updated_date": "2025-11-29",
+    "total_questions": 7,
+    "evaluation_metrics": [
+      "Precision@k",
+      "Recall@k",
+      "MRR",
+      "NDCG@k",
+      "ROUGE-L",
+      "BLEU",
+      "LLM-as-a-Judge",
+      "Latency",
+      "Coverage"
+    ]
+  },
+  "test_cases": [
+    {
+      "id": "test_001",
+      "query": "Cuantas personas se esperan que padezcan de diabetes en el año 2030 en America Latina?",
+      "expected_answer": "En el año 2030, se espera que aproximadamente 32,9 millones de personas en America Latina padezcan de diabetes.",
+      "relevant_docs": [
+        "fao_001",
+        "minsal_espana_001",
+        "minsal_guatemala_001",
+        "sesal_001",
+        "minsal_argentina_002"
+      ],
+      "clinical_data": null,
+      "category": "diabetes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "test_002",
+      "query": "¿Que tipo de medicamentos pueden llegar a alterar la presion arterial?",
+      "expected_answer": "Los medicamentos que pueden llegar a alterar la presion arterial son: Anticonceptivos (especialmente los que contienen al menos 50 μg de estrógeno y 1-4 mg de progestina), simpaticomimeticos (drogas para pérdida de peso, descongestionantes nasales), antiinflamatorios no esteroideos (AINEs, particularmente indometacina en uso crónico con posible aumento de 5mmHg), corticosteroides, fármacos inmunosupresores, drogas anticancerígenas, drogas estimulantes (anfetaminas, cocaína, éxtasis), y drogas para tratar la deficiencia de atención y trastornos hiperactivos.",
+      "relevant_docs": ["sesal_002", "minsal_ecuador_001", "ops_002"],
+      "clinical_data": null,
+      "category": "hipertension",
+      "difficulty": "medium"
+    },
+    {
+      "id": "test_003",
+      "query": "Cuales son las estrategias generales para prevenir la obesidad en tanto niños como adultos?",
+      "expected_answer": "Las estrategias para prevenir la obesidad incluyen: En lactantes y niños pequeños: promover la lactancia materna exclusiva, evitar la adición de azúcares y almidones a la leche del biberón, enseñar a las madres a aceptar la capacidad de su hijo para regular el aporte calórico en lugar de alimentarlo hasta que haya acabado el plato, asegurar la ingesta de micronutrientes necesaria para promover un crecimiento lineal óptimo. En niños y adultos: promover un estilo de vida activo, limitar las horas de televisión (por cada hora adicional de visión aumenta el riesgo de sobrepeso y obesidad), fomentar el consumo de frutas y verduras, restringir la ingesta de alimentos ricos en energía y pobres en micronutrientes (aperitivos envasados), restringir la ingesta de refrescos azucarados y bebidas azucaradas.",
+      "relevant_docs": ["oms_005", "aep_001", "fao_002"],
+      "clinical_data": null,
+      "category": "prevencion_obesidad",
+      "difficulty": "medium"
+    },
+    {
+      "id": "test_004",
+      "query": "¿Cuántas porciones de frutas y verduras se recomienda consumir al día?",
+      "expected_answer": "Se recomienda consumir al menos 5 porciones de frutas y verduras al día (pueden ser 3 raciones de frutas y 2-3 de verduras). Cada porción de fruta puede ser de unos 120 gramos o una pieza mediana (un plátano, una manzana, una pera, una naranja, una rodaja de piña, dos de melón o dos de sandía, o 1/2 taza de fruta picada). Cada porción de verduras se compone de 1/2 taza de verduras cocidas o 1 taza de verduras crudas. Se deben escoger frutas enteras cuando sea posible, incluyendo el consumo de la cáscara, y evitar el consumo de fruta en jugos.",
+      "relevant_docs": ["minsal_ecuador_001", "aesan_001", "aep_001"],
+      "clinical_data": null,
+      "category": "alimentacion_saludable",
+      "difficulty": "easy"
+    },
+    {
+      "id": "test_005",
+      "query": "¿Cuánta agua se recomienda consumir diariamente?",
+      "expected_answer": "Es importante consumir 2 litros de agua por día, lo que equivale aproximadamente a 6-8 vasos de agua al día. El agua puede beberse como tal o a través de caldos, sopas, infusiones, jugos y toda preparación que contenga buena cantidad de agua. Es importante vigilar la ingesta de líquidos para evitar la deshidratación, y los ancianos deben beber agua a intervalos regulares aunque no tengan sed. El agua de consumo debe ser limpia y potable.",
+      "relevant_docs": ["cesni_001", "fao_001", "ucm_001"],
+      "clinical_data": null,
+      "category": "hidratacion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "test_006",
+      "query": "¿Cómo se clasifica el sobrepeso y la obesidad según el Índice de Masa Corporal (IMC)?",
+      "expected_answer": "Según la clasificación de la OMS, el sobrepeso se define cuando el IMC está entre 25.0 y 29.9 kg/m² (también llamado preobesidad). La obesidad se clasifica cuando el IMC es igual o mayor a 30 kg/m², subdividiéndose en: Obesidad tipo I (IMC 30.0-34.9) con riesgo de comorbilidad moderado, Obesidad tipo II (IMC 35.0-39.9) con riesgo grave, y Obesidad tipo III (IMC igual o mayor a 40.0) con riesgo muy grave. El intervalo de IMC normal es de 18.5-24.9 kg/m². Estos valores son independientes de la edad e iguales para ambos sexos.",
+      "relevant_docs": ["oms_005", "ucm_001", "um_001"],
+      "clinical_data": null,
+      "category": "clasificacion_nutricional",
+      "difficulty": "medium"
+    }
+  ],
+  "evaluation_notes": {
+    "retrieval_k_values": [5, 10],
+    "llm_judge_criteria": [
+      "Precisión factual: ¿La información es correcta según el conocimiento médico?",
+      "Completitud: ¿La respuesta cubre todos los aspectos importantes de la pregunta?",
+      "Relevancia: ¿La respuesta está directamente relacionada con la pregunta?",
+      "Faithfulness: ¿La respuesta está basada en el contexto sin inventar información?"
+    ],
+    "scoring_scale": "1-10 para cada criterio LLM-as-a-Judge",
+    "notes": "Version 2.0: Todas las preguntas están basadas en datos específicos encontrados en los PDFs. Se agregaron más documentos relevantes a los tests existentes y se crearon 4 nuevos tests con información verificada."
+  }
+}
