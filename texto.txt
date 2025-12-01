@@ -1,0 +1,402 @@
+░▒▓ ~/Dev/nutri-rag/backend │ on main !4 ?8 ▓▒░
+╰─  source venv/bin/activate && python search_specific_info.py 2>&1 | grep -v "LangChainDeprecationWarning"
+
+  db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
+================================================================================
+BUSCANDO INFORMACIÓN ESPECÍFICA EN PDFS
+================================================================================
+
+
+================================================================================
+TEMA: diabetes_2030
+QUERY: diabetes 32.9 millones 2030 América Latina prevalencia
+================================================================================
+
+[1] Score: 0.241
+    Doc ID: fao/estado_guias_alimentarias_latam_caribe
+    Content (primeros 500 chars):
+    aproximadamente 13 millones tienen que el número de personas que menos de tres años de edad, etapa sufren diabetes en América Latina se crucial para intervenir y evitar daños incrementará en más de un 50 %. Así, irreversibles para el resto de sus para el año 2030 se prevé que 32,9 vidas. Existen suficientes evidencias millones de personas padecerán esta científicas que demuestran que la enfermedad. La diabetes y la obesidad
+
+
+[2] Score: 0.329
+    Doc ID: minsal_espana/estrategia_diabetes_sns
+    Content (primeros 500 chars):
+    en la incidencia. Se calcula que en torno a 78.000 niños y niñas menores de 15 años desarrollan la enfermedad cada año en todo el mundo. Tabla 1. Prevalencia de DM según regiones del mundo en 2011 Población Prevalencia de Prevalencia de Población con DM en Diabetes ajustada Diabetes ajustada Región Total en miles miles a Población a Población (20-79 años) (20-79 años) Nacional Mundial AFR 386.927 14.721 3,8 % 5 % EUR 653.233 52.770 8,1 % 6,0 % MENA 356.437 32.602 9,1 % 12,5 %
+
+
+[3] Score: 0.363
+    Doc ID: minsal_guatemala/guia_ent_2011
+    Content (primeros 500 chars):
+    Diabetes Mellitus Situación Epidemiológica: Latinoamérica está conformada por 21 países con casi 500 millones de habitantes y se espera un aumento del 14% en los próximos 10 años. Existe alrededor de 15 millones de personas con diabetes mellitus en Latinoamérica y esta cifra llegará a 20 millones en 10 años, mucho más de lo esperado por el simple incremento poblacional.1 Este comportamiento obedece a varios factores entre los cuales destacan la etnia, el cambio en los hábitos de vida y el
+
+
+[4] Score: 0.364
+    Doc ID: sesal/protocolo_diabetes_tipo2_primer_nivel
+    Content (primeros 500 chars):
+    presentaron datos tomados de los registros nacionales donde se encontró una prevalencia del 7.2% y un costo anual para el país de aproximadamente 6 mil millones de lempiras anuales ocasionados por la enfermedad (Agulla, 2016). Además se estima que por cada paciente conocido con Diabetes Mellitus hay al menos dos más que no se conocen por la enfermedad; con un dato aproximado según la Federación Internacional de Diabetes en
+
+
+[5] Score: 0.367
+    Doc ID: minsal_argentina/gpc_diabetes_tipo2
+    Content (primeros 500 chars):
+    mayores prevalencias actuales y futuras: a partir de los datos correspondientes a 215 países, en el año 2007 habría 26 millones de personas con diabetes, lo cual superaría la predicción efectuada en 199, que preveía 239 millones de diabéticos para el año 2010. Si no se toman medidas preventivas, la expectativa para 2025 sería de 30 millones de personas con diabetes en el mundo. El aumento de 6 factores predisponentes como el sedentarismo, la alimentación inadecuada, el
+
+
+
+================================================================================
+TEMA: diabetes_alimentos
+QUERY: diabetes alimentos evitar azúcar carbohidratos glucémico
+================================================================================
+
+[1] Score: 0.280
+    Doc ID: oms/dieta_nutricion_prevencion_cronicas
+    Content (primeros 500 chars):
+    1 personas con diabetes (54-57). Sin embargo, un bajo índice glucémico de por sí no es ga- rantía de un beneficio global para la salud, pues el alto contenido de grasas o fructosa de un alimento también puede traducirse en un menor índice glucémico, y esos alimentos también puede ser ricos en calorías. Así, mientras que esta propiedad de los alimentos que contienen carbohidratos puede muy bien influir en el riesgo de sufrir diabetes de tipo 2, se asigna a
+
+
+[2] Score: 0.329
+    Doc ID: minsal_argentina/gpc_diabetes_tipo2
+    Content (primeros 500 chars):
+    gramos por día (6 gramos de cloruro de sodio = una cucharadita de té de sal de mesa) limitando el agregado de sal a las comidas y el consumo de alimentos con alto contenido de sodio. Guia De Practica Clinica Nacional Sobre Prevencion, Diagnostico Y Tratamiento De La Diabetes Mellitus Tipo 2 (simple) o dos (doble) monosacáridos, mientras que los carbohidratos complejos tienen tres o más. Fuentes de azúcares simples: fructosa (frutas) y galactosa (presente en los productos
+
+
+[3] Score: 0.352
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    372 C. Mustieles Moreno, R. Barrio Castellanos TABLA III. Relación de alimentos permitidos, prohibidos y racionados en la ingesta del niño con diabetes tipo 1. 1. Alimentos permitidos libremente: Aquellos que contienen menos del 5% de carbohidratos. Entre ellos están la carne, el queso y la mayoría de las verduras. Estos alimentos no hay que restringirlos 2. Alimentos que no deben ingerirse en circunstancias normales: 2a.Alimentos que contienen un porcentaje elevado de azúcares:
+
+
+[4] Score: 0.362
+    Doc ID: minsal_argentina/gpc_diabetes_tipo2
+    Content (primeros 500 chars):
+    intolerancia; c) elegir apropiadamente los tipos de carbohidratos que se incluyen en la alimentación, reduciendo el consumo de monosacáridos y disacáridos reemplazándolos por almidones. Guia De Practica Clinica Nacional Sobre Prevencion, Diagnostico Y Tratamiento De La Diabetes Mellitus Tipo 2 Síntesis de la evidencia Cuando mayor sea la cantidad de carbohidratos ingeridos en una comida, mayor será el incremento de la glucemia y la liberación de insulina. 1+ 133
+
+
+[5] Score: 0.391
+    Doc ID: minsal_argentina/gpc_diabetes_tipo2
+    Content (primeros 500 chars):
+    33 Recomendación Preliminar basada en la evidencia disponible A El asesoramiento alimentario a todo paciente diabético o con síndrome metabólico debe incluir: a) reducir el contenido de ácidos grasos saturados en los alimentos e incrementar el consumo de los mono y poli- insaturados; b) ingerir fibras en una cantidad mayor a 0 g/día si no hay intolerancia; c) elegir apropiadamente los tipos de carbohidratos que se incluyen en la alimentación, reduciendo el consumo de monosacáridos y
+
+
+
+================================================================================
+TEMA: medicamentos_presion
+QUERY: anticonceptivos AINEs corticosteroides presión arterial medicamentos
+================================================================================
+
+[1] Score: 0.844
+    Doc ID: universidades/Manual de Nutrición Clínica Hospital Clínico Universitario de Valencia
+    Content (primeros 500 chars):
+    efectos secundarios graves inducidos por los corticoides,particularmente niños y adoles- centes,para evitar problemas como,por ejemplo,el retraso del crecimiento. Se ha utilizado NE suplementaria o como única forma de alimentación,de manera continua o intermitente,administrándose como suplemento nocturno mediante sonda de alimentación o a través de una PEG,con poco riesgo de formación de fístulas a nivel del orificio de inserción.
+
+
+[2] Score: 0.849
+    Doc ID: ops/manual_cuidado_ent
+    Content (primeros 500 chars):
+    codilatadores de distinto mecanismo de medida con cinta métrica inextensible co- acción, ß2 adrenérgicos y antimuscaríni- locada en plano horizontal al piso a nivel cos (ej. ultra-LABA/LAMA). de la media distancia entre el reborde cos- • Broncodilatadores antimuscarínicos: tal inferior y la cresta ilíaca luego de una inhiben los receptores muscarínicos de la espiración normal. Se necesita contar con vía aérea. Los fármacos anticolinérgicos cintas que midan más de 150 cm.
+
+
+[3] Score: 0.850
+    Doc ID: sesal/protocolo_hipertension_primer_nivel
+    Content (primeros 500 chars):
+    Anticonceptivos contienen al menos 50 μg de estrógeno y 1-4 mg de progestina.  Drogas para pérdida de peso  Descongestionantes nasales Simpaticomiméticos  Drogas para tratar la deficiencia de atención y trastornos hiperactivos  Drogas estimulantes de uso médico y recreativo (ej. anfetaminas, cocaína, éxtasis, etc.) Posible aumento de 5mmHg en uso crónico, particularmente si es indometacina,
+
+
+[4] Score: 0.858
+    Doc ID: ops/manual_cuidado_ent
+    Content (primeros 500 chars):
+    to cada 3-6 meses, excepto circunstancia in- (hidralazina, minoxidilo), que en general no dividuales como la presencia de insuficiencia son necesarios para su uso en Atención Pri- cardíaca o diabetes, intolerancia al tratamiento, maria de la Salud. dificultades para la adherencia etc. 10. Seguimiento y monitoreo del paciente • El uso de antihipertensivos que actuan so- hipertenso bre el sistema renina-angiotensina-aldoste- rona (IECA, ARAII, bloqueantes aldosteróni-
+
+
+[5] Score: 0.871
+    Doc ID: minsal_ecuador/gpc_hipertension_2019
+    Content (primeros 500 chars):
+    mayor evidencia con los dihidropiridínicos y en especial con amlodipino. Dos metaanálisis,(108) demostraron que los CA presentan efectividad similar a otros grupos de medicamentos de primera línea en términos de control tensional y prevención de eventos cardiovasculares mayores.(109,110) Antagonistas de los receptores de angiotensina II (ARAII) Los ARAII tienen un efecto similar al observado con la monoterapia en base a otros
+
+
+
+================================================================================
+TEMA: sodio_hipertension
+QUERY: sodio sal 5 gramos 2 gramos hipertensión
+================================================================================
+
+[1] Score: 0.683
+    Doc ID: minsal_ecuador/gpc_hipertension_2019
+    Content (primeros 500 chars):
+    | | | | (mmHg). | | | isquémico transitorio, |  | | | | - HTA tratada (si o no). | | | claudicación intermitente. |  | | | | - Fumador (si o no).  | | | |  | | | | - Historia Familiar de ECV en | | | |  | | | | primer grado menor de 60 | | | |  | | | | años (si o no). | | | |  | | | | - Índice de masa corporal | | | |  | | | | (kg/m2). | | | |  | | | | - Región de Reino Unido | | | |
+
+
+[2] Score: 0.688
+    Doc ID: universidades/ucm_manual_nutricion_dietetica
+    Content (primeros 500 chars):
+    mg de sodio al día (menos de 6 g de sal). La sal es esencial para la vida pero los productos frescos contienen la cantidad necesaria.  Vigilar la ingesta de líquidos para evitar la deshidratación. Tomar unos dos litros al día. Los ancianos deben saber que tienen que beber agua a intervalos regulares aunque no tengan sed. Deben colocar a la vista la cantidad de agua que tienen que tomar diariamente.
+
+
+[3] Score: 0.767
+    Doc ID: acpa/Nutrición y Dietética Gustavo Graciano
+    Content (primeros 500 chars):
+    en sodio y grasa. de 10 gramos de grasa. 28. Jaleas, confituras y almíbares contienen mucha azúcar refinada; Trate, por esta 18. La mayoría de estos platos posee mucho sodio; para remediar esto, usted deberá razón, de usar frutas frescas o almíbares livianos (del tipo light) elegir los que tengan menos de 600 miligramos de sodio. 29. Para emplear menos sodio, utilice hierbas o especias en reemplazo de sal. 19. La cantidad de grasas presente en varios panqueques congelados, wafles y tostadas
+
+
+[4] Score: 0.792
+    Doc ID: acpa/Nutrición y Dietética Gustavo Graciano
+    Content (primeros 500 chars):
+    29. Para emplear menos sodio, utilice hierbas o especias en reemplazo de sal. 19. La cantidad de grasas presente en varios panqueques congelados, wafles y tostadas 30. Si decide usar sustitutos de sal, asegúrese siempre de saber qué contienen; consulte francesas varían enormemente; elija aquellos con menos de 6 gramos por cada 3 a su médico antes de usarlos. panqueques, 2 wafles o 1 tostada francesa. GALLETAS VEGETALES ENLATADOS
+
+
+[5] Score: 0.796
+    Doc ID: acpa/Nutrición y Dietética Gustavo Graciano
+    Content (primeros 500 chars):
+    29. Para emplear menos sodio, utilice hierbas o especias en reemplazo de sal. 30. Si decide usar sustitutos de sal, asegúrese siempre de saber qué contienen; consulte a su médico antes de usarlos. GALLETAS 31. Las galletas comerciales tienen generalmente 40% de sus kilocalorías provenientes de las grasas; para consumir menos grasas y menos grasas saturadas, elija las que tengan menos gramos de grasa por onza , como las de jengibre, graham y barras de higos.
+
+
+
+================================================================================
+TEMA: prevencion_obesidad
+QUERY: lactancia materna exclusiva azúcares televisión obesidad prevención
+================================================================================
+
+[1] Score: 0.479
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    y vegetales. Así, la televisión influye en el tipo y la frecuencia de alimentos sólidos y líquidos consumidos y, en consecuencia, en el contenido de energía y nutrien- tes, en el tamaño de las raciones y en la calidad nutricional. En diferentes estudios en Europa y EE.UU. se evidencia que por cada hora de visión de la televisión y tener televisión en la habitación aumenta el riesgo de sobrepeso y obesidad. En la actua-
+
+
+[2] Score: 0.488
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    televisión en los días de actividad escolar y un 58% los días del fin de semana, con- sumiendo un 18 y un 26% respectivamente del total de calorías ingeridas. El mayor consumo de alimentos corresponde a la comida rápida y a las bebidas azucaradas. Por cada hora adicional de visión de la televisión disminuye el consumo de frutas y vegetales. Así, la televisión influye en el tipo y la frecuencia de alimentos sólidos y líquidos consumidos y, en consecuencia, en el contenido de energía y nutrien-
+
+
+[3] Score: 0.598
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    televisión u otras TICs. Número de comidas al día Lo ideal son tres comidas principales: desayuno, comida y cena y dos peque- ñas colaciones, una a media mañana y otra a media tarde. Estas cinco comidas reparten el aporte calórico diario. El desayuno el 20-25%, la colación de media mañana, aproximadamente el 10%, la comida del mediodía, el 30-35%, la merien- da aproximadamente un 10% y la cena el 20-25%. El desayuno es una comida principal, “rompe el ayuno” de 10-12 horas y res-
+
+
+[4] Score: 0.683
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    R. Tojo Sierra, R. Leis Trabazo Manual Nutrición 540p 29/6/07 09:30 Página 92 92 R. Tojo Sierra, R. Leis Trabazo uso de programas, juegos, Internet, etc. Un reciente estudio en adolescentes espa- ñoles demuestra que de lunes a viernes, el tiempo dedicado a las TICs en días laborables es de 4,5 horas y se eleva el fin de semana a 5,4 horas. Existe evidencia científica de que la visión de la televisión influye en los hábi-
+
+
+[5] Score: 0.694
+    Doc ID: fao/panorama_seguridad_alimentaria_latam_2019
+    Content (primeros 500 chars):
+    de edad y veda la publicidad, por televisión o nutrimentales y de publicidad que deberán observar los anunciantes de alimentos y bebidas no alcohólicas para publicitar sus productos en televisión abierta y restringida, 41 Es decir, cualquier forma de comunicación de mercado así como en salas de exhibición cinematográfica, conforme que busca persuadir a los niños, niñas y adolescentes a a lo dispuesto en los artículos 22 Bis, 79, fracción X y 86,
+
+
+
+================================================================================
+TEMA: hierro_gestantes
+QUERY: hierro embarazadas 30 mg suplementación gestación
+================================================================================
+
+[1] Score: 0.640
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    Manual Nutrición 540p 29/6/07 0 | 9:30 Página 180 Manual Nutrición 540p 29/6/07 09:30 Página 181 Aportaciones nutricionales en la mujer embarazada 181 Hierro La suplementación que se recomienda durante el embarazo es de 30 mg/día, ya que durante la gestación hay un aumento de la masa eritrocitaria materna, hay unas necesidades del feto y unas pérdidas de sangre durante el parto. Se calcula que un total de 1.040 mg a lo largo de la gestación viene a satisfacer estas nece- sidades.
+
+
+[2] Score: 0.674
+    Doc ID: cesni/educacion_alimentaria_nutricional_docente
+    Content (primeros 500 chars):
+    respecto de los 14 mg requeridos cuando la mujer no está embarazada. Esta cantidad no se puede cubrir bien con alimentos habituales y se requiere aportar suplementos de hierro en este etapa.También durante la lactancia hay que cuidar la dieta para garantizar la correcta alimentación del bebé. • Aporte de calcio igual a 1000 mg diarios en los primeros trimestres del embarazo y 1200 mg diarios durante el tercer trimestre del embarazo. El recién nacido retiene
+
+
+[3] Score: 0.688
+    Doc ID: cesni/educacion_alimentaria_nutricional_docente
+    Content (primeros 500 chars):
+    razo. Se ha estimado que debe incrementarse el consumo de hierro a 30 mg diarios respecto de los 14 mg requeridos cuando la mujer no está embarazada. Esta cantidad no se puede cubrir bien con alimentos habituales y se requiere aportar suplementos de hierro en este etapa.También durante la lactancia hay que cuidar la dieta para garantizar la correcta alimentación del bebé. • Aporte de calcio igual a 1000 mg diarios en los primeros trimestres del embarazo y
+
+
+[4] Score: 0.708
+    Doc ID: minsal_ecuador/gpc_hipertension_2019
+    Content (primeros 500 chars):
+    - Incremento inicial: después de 7-14 días incrementar a 12.5 mg oral diario. - Incremento posterior: 25 mg oral diario. - Disminuir las dosis progresivamente en 1 a 2 semanas, para descontinuar. Precauciones - Uso con cuidado en procesos anestésicos y quirúrgicos, tirotoxicosis, insuficiencia hepática, insuficiencia renal, enfermedad vascular periférica, insuficiencia cardíaca especialmente izquierda descompensada, miastenia gravis, psoriasis.
+
+
+[5] Score: 0.733
+    Doc ID: sesal/protocolo_diabetes_tipo2_primer_nivel
+    Content (primeros 500 chars):
+    vez al día; valorar en incrementos de 500 mg semanales u 850 mg cada dos semanas; también puede valorar de 500 mg dos veces al día a 850 mg dos veces al día después de 2 semanas. Si se requiere una dosis> 2,000 mg / día, se puede tolerar mejor en 3 dosis divididas. Dosis máxima recomendada: 2,550 mg / día. Tableta de liberación prolongada: Nota: Si no se logra el control glucémico a la dosis máxima, puede dividir la dosis y administrarla dos veces al día.
+
+
+
+================================================================================
+TEMA: actividad_fisica
+QUERY: 150 minutos actividad física semana moderada
+================================================================================
+
+[1] Score: 0.408
+    Doc ID: universidades/ucm_manual_nutricion_dietetica
+    Content (primeros 500 chars):
+    Más de 30 minutos/día de actividad moderada y 20 minutos/semana de actividad vigorosa. Alta Personas que diariamente andan largas distancias, usan la bicicleta para desplazarse, desarrollan actividades vigorosas o practican deportes que requieren un alto nivel de esfuerzo durante varias horas. Ej: Tareas agrícolas no mecanizadas, mineros, forestales, cavar, cortar leña, segar a mano, escalar, montañismo, jugar al fútbol, tenis, jogging, bailar, esquiar, etc.
+
+
+[2] Score: 0.429
+    Doc ID: universidades/ucm_manual_nutricion_dietetica
+    Content (primeros 500 chars):
+    Más de 30 minutos/día de actividad moderada y 20 minutos/semana de actividad vigorosa. Alta | Alta | Personas que diariamente andan largas distancias, usan la bicicleta para desplazarse, desarrollan actividades vigorosas o practican deportes que requieren un alto nivel de esfuerzo durante varias horas. Ej: Tareas agrícolas no mecanizadas, mineros, forestales, cavar, cortar leña, segar a mano, escalar, montañismo, jugar al fútbol, tenis, jogging, bailar, esquiar, etc.
+
+
+[3] Score: 0.491
+    Doc ID: oms/dieta_nutricion_prevencion_cronicas
+    Content (primeros 500 chars):
+    salud se aportaron datos demostrativos de que 30 minutos de actividad moderada son sufi- cientes en lo que atañe a la salud cardiovascular/metabólica, pero no respecto de todos los 66 beneficios para la salud. Dado que la prevención de la obesidad es una de las metas de sa- lud fundamentales, la recomendación de 60 minutos diarios de actividad física moderada se considera apropiada. La actividad de intensidad moderada se considera suficiente para lo-
+
+
+[4] Score: 0.538
+    Doc ID: minsal_argentina/abordaje_integral_ent
+    Content (primeros 500 chars):
+    En el marco de estas acciones, a continuación se presentan algunos ejemplos: • Si se practica actividad física moderada en la vida diaria y en forma programada se puede mejorar de manera significativa la salud en todos sus aspectos, el bienestar y la calidad de vida. • La actividad física regular se define como el ejercicio dinámico que hace intervenir a grandes grupos musculares durante al menos 30 minutos en el día, todos los días de la
+
+
+[5] Score: 0.541
+    Doc ID: oms/dieta_nutricion_prevencion_cronicas
+    Content (primeros 500 chars):
+    Ambas recomendaciones incluyen la idea de que la actividad diaria puede realizarse en va- rios intervalos cortos. Importa señalar que los dos consejos son válidos para las personas que por lo demás llevan una vida sedentaria. Algunas actividades ocupacionales y tareas domésticas constituyen suficiente ejercicio físico cotidiano. Al recomendar la actividad física, es preciso evaluar tanto los riesgos como los beneficios
+
+
+
+================================================================================
+TEMA: imc_clasificacion
+QUERY: IMC 25 30 sobrepeso obesidad clasificación
+================================================================================
+
+[1] Score: 0.338
+    Doc ID: universidades/um_nutricion_conciencia
+    Content (primeros 500 chars):
+    cada momento de nuestro IMC o índice de masa corporal: kg / [altura (m)]2. • Debemos procurar, regulando nuestra ingesta calórica con dietas equilibradas y nuestro gasto energético con ejercicio moderado, conservar nuestros valores de IMC en el intervalo 18-25, que se considera el normal y saludable y que debiera constituir el símbolo de la belleza corporal. •La obesidad es, posiblemente, la enfermedad más recurrente y que necesita más constancia para ser controlada. Aunque los fracasos
+
+
+[2] Score: 0.362
+    Doc ID: oms/dieta_nutricion_prevencion_cronicas
+    Content (primeros 500 chars):
+    la obesidad en una población, así como los riesgos que llevan asociados. Sin embargo, no da cuenta de las amplias variaciones en la obesidad entre distintos individuos y poblacio- nes. En el cuadro 8 se explica cómo se definen el sobrepeso y la obesidad en relación con el IMC. Cuadro 8 Clasificación del exceso de peso en adultos según el IMCa Clasificación IMC (kg/m2) Riesgo de comorbilidad Peso insuficiente < 18,5 Bajo (pero mayor riesgo de otros problemas clínicos)
+
+
+[3] Score: 0.367
+    Doc ID: universidades/ucm_manual_nutricion_dietetica
+    Content (primeros 500 chars):
+    completamente sana. Por el contrario, la gente inactiva, muy sedentaria, puede tener un IMC y un peso adecuados cuando, de hecho, seguramente, tienen demasiada cantidad de grasa.  Obesidad El sobrepeso y la obesidad ‐importantes problemas de salud pública‐ pueden definirse como una excesiva acumulación de grasa ‐general o localizada‐ en el cuerpo. Se considera que una persona presenta sobrepeso cuando su IMC está comprendido entre 25.0 y 29.9 kg/m2 y son obesas aquellas que tienen un
+
+
+[4] Score: 0.399
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    índice es superior a + 2 DE para la edad y sexo o por encima del percentil 97. Por otro lado, sobrepeso se considera un IMC superior al percentil 85 (+1 y +2 DE). • En estos momentos, la obesidad es un problema sanitario de primer orden, debido a su prevalencia y a la relación causal existente entre obesidad y otros trastornos: hipertensión arterial, trastornos del metabolismo lipídi- co, diabetes, litiasis biliar, patología osteoarticular y algunos tipos de cán- cer. PREVALENCIA
+
+
+[5] Score: 0.403
+    Doc ID: oms/dieta_nutricion_prevencion_cronicas
+    Content (primeros 500 chars):
+    Cuadro 8 Clasificación del exceso de peso en adultos según el IMCa Clasificación IMC (kg/m2) Riesgo de comorbilidad Peso insuficiente < 18,5 Bajo (pero mayor riesgo de otros problemas clínicos) Intervalo normal 18,5-24,9 Medio Sobrepeso (cid:149) 25,0 Preobesidad 25,0-29,9 Mayor Obesidad de tipo I 30,0-34,9 Moderado Obesidad de tipo II 35,0-39,9 Grave Obesidad de tipo III (cid:149) 40,0 Muy grave a Estos valores del IMC son independientes de la edad e iguales para ambos sexos. Sin em-
+
+
+
+================================================================================
+TEMA: azucar_libre
+QUERY: azúcar libre 10% energía OMS recomendación
+================================================================================
+
+[1] Score: 0.565
+    Doc ID: universidades/ucm_manual_nutricion_dietetica
+    Content (primeros 500 chars):
+    pueden tener el inconveniente de que sólo aportan energía y ningún nutriente. Sin embargo, pocas veces el azúcar se come solo (café, refrescos). Su sabor dulce, agradable puede favorecer el consumo de otros alimentos que sí aporten nutrientes: leche, flanes, postres y esto puede ser importante en determinados grupos de población como las personas mayores, inapetentes, etc. El azúcar está constituido
+
+
+[2] Score: 0.621
+    Doc ID: universidades/um_nutricion_conciencia
+    Content (primeros 500 chars):
+    mente en los desayunos. Son un alimento bastante completo y recomendable, en algunos casos están enriquecidos con vitami- nas y minerales. La Nutrición es con-ciencia 115 Azúcares, dulces y bebidas azucaradas Los azúcares más disponibles como son el azúcar de mesa y la miel son de absorción rápida y se caracterizan por aportar energía y au- mentar la palatabilidad de los alimentos y bebidas. El azúcar es el producto refinado que se obtiene de la caña o de la
+
+
+[3] Score: 0.626
+    Doc ID: fao/panorama_seguridad_alimentaria_latam_2019
+    Content (primeros 500 chars):
+    y niños de 0 a 36 meses, entre 18% y más de 50% relacionados con la ingesta excesiva de energía, contenían más de 30% de calorías provenientes del azúcar, sal/sodio y grasas saturadas. azúcar*, mientras que más de 30% de los productos */ La fAo y la oms (2003) recomiendan que no más de 10% de la energía provenga de azúcar añadida, y posteriormente la oms lo redujo a 5%.
+
+
+[4] Score: 0.691
+    Doc ID: fao/estado_guias_alimentarias_latam_caribe
+    Content (primeros 500 chars):
+    de sal” lo encontraron claro. la opinión de las personas sobre las guías alimentarias. Los resultados • El mensaje “Modere el consumo son altamente positivos en cuanto de azúcar” les pareció ambiguo. a la valoración de los mensajes, la comprensión, la claridad y la No reporta ni el factibilidad de llevarlos a cabo en el año ni el grupo hogar. En general, se considera que en el que realizó los mensajes son comprensibles, una evaluación de útiles, sencillos y confiables. conocimientos, donde
+
+
+[5] Score: 0.705
+    Doc ID: cesni/educacion_alimentaria_nutricional_docente
+    Content (primeros 500 chars):
+    Azúcares y dulces: aportan principalmente energía y es recomendable moderar su consumo l para evitar sobrepeso, obesidad y caries dentales. A este grupo se refieren las Guías Alimentarias cuando nos recuerdan que: Es bueno disminuir el consumo de azúcar y sal. • Es recomendable comer menos golosinas y dulces para evitar sobrepeso y caries. • Prefiera agua, soda y jugos naturales en vez de gaseosas y bebidas dulces artificiales.
+
+
+
+================================================================================
+TEMA: frutas_verduras_5
+QUERY: 5 porciones frutas verduras día 400 gramos
+================================================================================
+
+[1] Score: 0.532
+    Doc ID: minsal_ecuador/gpc_hipertension_2019
+    Content (primeros 500 chars):
+    | Frutas y verduras |  | - Asegúrese de comer al menos cinco porciones de frutas y verduras al día por su gran |  | contenido de potasio. |  | - El consumo de frutas debe ser de la siguiente manera: |  |  Al menos dos porciones de frutas enteras. |  |  Cada porción de frutas se compone de ½ taza de fruta picada o 1 unidad pequeña; |  | por ejemplo: ½ plátano, ½ taza de uva, 1 manzana pequeña o 1 pera pequeña. |
+
+
+[2] Score: 0.534
+    Doc ID: minsal_ecuador/gpc_hipertension_2019
+    Content (primeros 500 chars):
+    |  Cada porción de frutas se compone de ½ taza de fruta picada o 1 unidad pequeña; |  | por ejemplo: ½ plátano, ½ taza de uva, 1 manzana pequeña o 1 pera pequeña. |  |  Escoger consumir frutas enteras, cuando sea posible incluyendo el consumo de la |  | cascara. |  |  Evitar el consumo de fruta en jugos. |  | - El consumo de verduras se recomienda de la siguiente manera: |  |  Por lo menos tres porciones de verduras diarias. |
+
+
+[3] Score: 0.602
+    Doc ID: aesan/recomendaciones_dieteticas_espana_2020
+    Content (primeros 500 chars):
+    repollo, coliflor, espinacas, guisantes, espárragos, zanahorias, puerros, grelos, berenjenas, etc.) 5 raciones al día de frutas y verduras (pueden ser 3 raciones de frutas). Cada ración de frutas puede ser de unos 120 g o una pieza mediana: un plátano, una manzana, una Frutas A diario, varias veces pera, una naranja o similar, una rodaja de piña, dos de melón o dos de sandía. Un vaso de zumo de fruta fresca de unos 150 ml equivale también a una ración Farináceos (cereales, arroz,
+
+
+[4] Score: 0.603
+    Doc ID: minsal_ecuador/gpc_hipertension_2019
+    Content (primeros 500 chars):
+    | cascara. |  |  Evitar el consumo de fruta en jugos. |  | - El consumo de verduras se recomienda de la siguiente manera: |  |  Por lo menos tres porciones de verduras diarias. |  |  Cada porción de verduras se compone de ½ taza de verduras cocidas o 1 taza de |  | verduras crudas. |  |  Se pueden utilizar verduras en ensaladas, cremas y estofados. |  |  Ejemplos de una porción de verduras puede ser: 1 taza de cebolla picada, ½ taza de |
+
+
+[5] Score: 0.617
+    Doc ID: universidades/Manual de Nutrición Pedíatrica Comité de Nutrición de la AEP
+    Content (primeros 500 chars):
+    dos al horno. - Se debe incrementar la ingesta diaria de frutas, verduras y hortalizas hasta alcanzar, como mínimo, 5 raciones al día de estos alimentos. Para ello se debe incrementar el aporte de verduras variadas frescas o cocinadas tanto en los primeros platos como en la guarnición de los segundos así como de fruta fres- ca en el postre. También se debe potenciar el consumo de potajes prepara- dos con hortalizas, patatas, verduras o combinando cereales y legumbres.
+
+
+
+================================================================================
+TEMA: agua_litros
+QUERY: agua litros día hidratación 2 litros
+================================================================================
+
+[1] Score: 0.636
+    Doc ID: cesni/educacion_alimentaria_nutricional_docente
+    Content (primeros 500 chars):
+    • Es importante consumir 2 litros de agua por día. • El agua puede beberse como tal o a través de caldos, sopas, infusiones, jugos y toda preparación que contenga buena cantidad de agua. • El agua de consumo debe ser limpia y potable. Si se sospecha que está contaminada debe hervirse Véase “El agua para el durante 5 minutos o agregar 2 gotas de lavandina consumo”, en la página 115 por cada litro de agua. de este libro.
+
+
+[2] Score: 0.696
+    Doc ID: fao/estado_guias_alimentarias_latam_caribe
+    Content (primeros 500 chars):
+    •»La mejor forma de mantenerte hidratado, es con de 6 a 8 vasos de agua al día. •»Lee y compara las etiquetas de los alimentos y prefiere los bajos en grasas, azúcar y sal (sodio). “ Toma de 6 a 8 vasos de agua al día.” 45 CHILE | | Guías alimentarias basadas en alimentos 1997 | Guías alimentarias basadas en alimentos 2005 | Guías alimentarias basadas en alimentos 2013 •»Consuma diferentes alimentos durante el día. •»Aumente el consumo de verduras, frutas y legumbres.
+
+
+[3] Score: 0.740
+    Doc ID: universidades/ucm_manual_nutricion_dietetica
+    Content (primeros 500 chars):
+    mg de sodio al día (menos de 6 g de sal). La sal es esencial para la vida pero los productos frescos contienen la cantidad necesaria.  Vigilar la ingesta de líquidos para evitar la deshidratación. Tomar unos dos litros al día. Los ancianos deben saber que tienen que beber agua a intervalos regulares aunque no tengan sed. Deben colocar a la vista la cantidad de agua que tienen que tomar diariamente.
+
+
+[4] Score: 0.761
+    Doc ID: universidades/um_nutricion_conciencia
+    Content (primeros 500 chars):
+    En primer lugar se seleccionan los granos de habas y los más gordos que empiezan a tener la piel casi blanca se escaldan en agua hirviendo y se les quita dicha piel. En cacerola de acero se pone el aceite con la cebolla, a los diez minutos se aviva un poco el fuego y se echan las habas, cuando nuevamente empiezan a hervir se baja el fuego y dejan cocer lentamente, a media cocción (20 minutos más o menos) se les agrega medio vaso de agua, cuando ya están
+
+
+[5] Score: 0.765
+    Doc ID: cesni/educacion_alimentaria_nutricional_docente
+    Content (primeros 500 chars):
+    se sospecha que está contaminada debe hervirse Véase “El agua para el durante 5 minutos o agregar 2 gotas de lavandina consumo”, en la página 115 por cada litro de agua. de este libro. Repasar los saberes adquiridos.Para revisar los saberes trabajados a lo largo dela secuencia y que los alumnos puedan establecer nexos con otros conocimien- tos podemos ofrecer algunos problemas, como los que se citan a continuación: AGraciela no le gusta la leche, y toma un Juan no consume casi nada de fibra, su
