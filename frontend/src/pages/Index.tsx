@@ -8,14 +8,14 @@ import { ChatSidebar } from '@/components/ChatSidebar';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { ClinicalDataDialog } from '@/components/ClinicalDataDialog';
 import { Message, ClinicalData } from '@/types/chat';
-import { mockChatHistory } from '@/data/mockData';
+import { Chat } from '@/services/api';
 import { api } from '@/services/api';
 import { clinicalStorage } from '@/utils/clinicalStorage';
 import { toast } from '@/hooks/use-toast';
 
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [chatHistory] = useState(mockChatHistory);
+  const [chatHistory, setChatHistory] = useState<Chat[]>([]);
   const [currentChatId, setCurrentChatId] = useState<string | undefined>();
   const [isTyping, setIsTyping] = useState(false);
   const [typingStatus, setTypingStatus] = useState('Analizando tu pregunta...');
@@ -31,6 +31,21 @@ const Index = () => {
       // Show dialog on first visit
       setShowClinicalDialog(true);
     }
+  }, []);
+
+  // Load chat history on mount
+  useEffect(() => {
+    const loadChatHistory = async () => {
+      try {
+        const response = await api.listChats();
+        setChatHistory(response.chats);
+      } catch (error) {
+        console.error('Failed to load chat history:', error);
+        // Keep empty chat history on error
+      }
+    };
+
+    loadChatHistory();
   }, []);
 
   const handleSaveClinicalData = (data: ClinicalData) => {
@@ -74,6 +89,29 @@ const Index = () => {
   };
 
   const handleSendMessage = async (content: string) => {
+    let chatId = currentChatId;
+
+    // Create new chat if none exists
+    if (!chatId) {
+      try {
+        const chatResponse = await api.createChat(content.length > 50 ? content.substring(0, 50) + '...' : content);
+        chatId = chatResponse.chat_id;
+        setCurrentChatId(chatId);
+
+        // Refresh chat history
+        const historyResponse = await api.listChats();
+        setChatHistory(historyResponse.chats);
+      } catch (error) {
+        console.error('Failed to create chat:', error);
+        toast({
+          title: 'Error',
+          description: 'No se pudo crear el chat.',
+          variant: 'destructive',
+        });
+        return;
+      }
+    }
+
     // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -92,13 +130,14 @@ const Index = () => {
     setTypingStatus('Analizando tu pregunta...');
 
     try {
-      // Call API
+      // Call API with chat_id
       setTimeout(() => setTypingStatus('Buscando información en guías oficiales...'), 500);
 
       const response = await api.query({
         query: content,
         mode,
         clinical_data: isClinicalQuery ? clinicalData || undefined : undefined,
+        chat_id: chatId,
       });
 
       setTypingStatus('Generando respuesta...');
@@ -124,6 +163,10 @@ const Index = () => {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+
+      // Refresh chat history to update timestamps
+      const historyResponse = await api.listChats();
+      setChatHistory(historyResponse.chats);
     } catch (error) {
       console.error('Error querying API:', error);
 
@@ -155,15 +198,57 @@ const Index = () => {
     setCurrentChatId(undefined);
   };
 
-  const handleSelectChat = (chatId: string) => {
+  const handleSelectChat = async (chatId: string) => {
     setCurrentChatId(chatId);
-    // TODO: Cargar mensajes del chat seleccionado
-    setMessages([]);
+    setIsTyping(false); // Clear any typing state
+
+    try {
+      const response = await api.getChat(chatId);
+      const loadedMessages: Message[] = response.messages.map(msg => ({
+        id: msg.id,
+        role: msg.role,
+        content: msg.content,
+        citations: msg.citations,
+        timestamp: new Date(msg.timestamp),
+      }));
+      setMessages(loadedMessages);
+    } catch (error) {
+      console.error('Failed to load chat:', error);
+      setMessages([]);
+      toast({
+        title: 'Error',
+        description: 'No se pudieron cargar los mensajes del chat.',
+        variant: 'destructive',
+      });
+    }
   };
 
-  const handleDeleteChat = (chatId: string) => {
-    // TODO: Implementar eliminación de chat
-    console.log('Eliminar chat:', chatId);
+  const handleDeleteChat = async (chatId: string) => {
+    try {
+      await api.deleteChat(chatId);
+
+      // Refresh chat history
+      const response = await api.listChats();
+      setChatHistory(response.chats);
+
+      // If current chat was deleted, reset state
+      if (currentChatId === chatId) {
+        setCurrentChatId(undefined);
+        setMessages([]);
+      }
+
+      toast({
+        title: 'Chat eliminado',
+        description: 'El chat ha sido eliminado exitosamente.',
+      });
+    } catch (error) {
+      console.error('Failed to delete chat:', error);
+      toast({
+        title: 'Error',
+        description: 'No se pudo eliminar el chat.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (

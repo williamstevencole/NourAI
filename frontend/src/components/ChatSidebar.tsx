@@ -17,7 +17,8 @@ import {
 interface ChatHistoryItem {
   id: string;
   title: string;
-  date: string;
+  created_at: string;
+  updated_at: string;
 }
 
 interface ChatSidebarProps {
@@ -65,7 +66,9 @@ export function ChatSidebar({
                         <MessageSquare className="h-4 w-4 shrink-0" />
                         <div className="flex flex-col items-start overflow-hidden">
                           <span className="truncate text-sm font-medium">{chat.title}</span>
-                          <span className="text-xs text-muted-foreground">{chat.date}</span>
+                          <span className="text-xs text-muted-foreground">
+                            {new Date(chat.updated_at).toLocaleDateString()}
+                          </span>
                         </div>
                       </SidebarMenuButton>
                       <Button

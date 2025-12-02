@@ -5,6 +5,7 @@ export interface QueryRequest {
   mode?: 'general' | 'clinical';
   top_k?: number;
   clinical_data?: ClinicalData;
+  chat_id?: string;
 }
 
 export interface ClinicalData {
@@ -35,6 +36,47 @@ export interface QueryResponse {
   sources: Source[];
 }
 
+export interface Chat {
+  id: string;
+  title: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  citations?: Citation[];
+  timestamp: string;
+}
+
+export interface Citation {
+  id: string;
+  label: string;
+  organization: string;
+  year: string;
+  title: string;
+  url?: string;
+  excerpt?: string;
+}
+
+export interface ChatListResponse {
+  chats: Chat[];
+}
+
+export interface ChatMessagesResponse {
+  messages: Message[];
+}
+
+export interface CreateChatRequest {
+  title: string;
+}
+
+export interface CreateChatResponse {
+  chat_id: string;
+}
+
 export const api = {
   async query(request: QueryRequest): Promise<QueryResponse> {
     const response = await fetch(`${API_BASE_URL}/api/query`, {
@@ -60,5 +102,51 @@ export const api = {
     }
 
     return response.json();
+  },
+
+  async createChat(title: string): Promise<CreateChatResponse> {
+    const response = await fetch(`${API_BASE_URL}/api/chats`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to create chat: ${response.statusText}`);
+    }
+
+    return response.json();
+  },
+
+  async listChats(limit: number = 50): Promise<ChatListResponse> {
+    const response = await fetch(`${API_BASE_URL}/api/chats?limit=${limit}`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to list chats: ${response.statusText}`);
+    }
+
+    return response.json();
+  },
+
+  async getChat(chatId: string): Promise<ChatMessagesResponse> {
+    const response = await fetch(`${API_BASE_URL}/api/chats/${chatId}`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to get chat: ${response.statusText}`);
+    }
+
+    return response.json();
+  },
+
+  async deleteChat(chatId: string): Promise<void> {
+    const response = await fetch(`${API_BASE_URL}/api/chats/${chatId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete chat: ${response.statusText}`);
+    }
   },
 };
