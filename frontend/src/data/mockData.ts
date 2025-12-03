@@ -89,11 +89,15 @@ La **fibra** de las verduras ayuda a prevenir el estreñimiento y contribuye a u
 export const quickPrompts: QuickPrompt[] = [
   {
     id: "1",
-    text: "¿Porciones sugeridas para 7 años (GABA)?",
+    text: "Hazme una dieta sin pescado.",
+  },
+  {
+    id: "2",
+    text: "Cuantas porciones de frutas debo comer al día?",
   },
   {
     id: "3",
-    text: "Cómo reducir sodio según guía nacional",
+    text: "Recomendaciones de alimentos para personas con hipertensión y diabetes.",
   },
 ];
 
