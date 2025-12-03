@@ -9,7 +9,7 @@ from config import TOP_K
 from utils.chat_db import create_chat, save_message, get_chat_list, get_chat_messages, delete_chat
 
 app = FastAPI(
-    title="Nutri-RAG API",
+    title="NourAI API",
     description="RAG system for nutrition and health queries",
     version="2.0.0"
 )
