@@ -204,13 +204,31 @@ const Index = () => {
 
     try {
       const response = await api.getChat(chatId);
-      const loadedMessages: Message[] = response.messages.map(msg => ({
-        id: msg.id,
-        role: msg.role,
-        content: msg.content,
-        citations: msg.citations,
-        timestamp: new Date(msg.timestamp),
-      }));
+      const loadedMessages: Message[] = response.messages.map(msg => {
+        // Convert sources to citations for loaded messages (same as fresh responses)
+        let citations = msg.citations;
+        if (msg.sources && msg.sources.length > 0) {
+          citations = msg.sources.map((source, idx) => ({
+            id: `cite-${idx}`,
+            label: `[${idx + 1}]`,
+            organization: source.organization,
+            year: source.year?.toString() || '',
+            title: source.title,
+            url: source.link,
+            excerpt: `Similitud: ${source.similarity}`,
+          }));
+        }
+
+        return {
+          id: msg.id,
+          role: msg.role,
+          content: msg.content,
+          citations,
+          sources: msg.sources,
+          timestamp: new Date(msg.timestamp),
+        };
+      });
+      console.log(loadedMessages)
       setMessages(loadedMessages);
     } catch (error) {
       console.error('Failed to load chat:', error);
