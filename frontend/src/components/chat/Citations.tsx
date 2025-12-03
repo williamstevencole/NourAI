@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Citation } from '@/types/chat';
+import { Source } from '@/services/api';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface CitationsProps {
-  citations: Citation[];
+  citations?: Citation[];
+  sources?: Source[];
 }
 
 export function Citations({ citations }: CitationsProps) {
@@ -107,3 +109,4 @@ export function Citations({ citations }: CitationsProps) {
     </div>
   );
 }
+

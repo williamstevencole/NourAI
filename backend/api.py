@@ -112,23 +112,32 @@ def query(request: QueryRequest):
         if request.chat_id:
             try:
                 # Save user message
-                save_message(request.chat_id, "user", request.query)
+                user_msg_id = save_message(request.chat_id, "user", request.query)
+                print(f"Successfully saved user message with ID: {user_msg_id}")
 
                 # Save assistant message with sources as citations
-                citations = [{
-                    "id": f"cite-{i}",
-                    "label": f"[{i + 1}]",
-                    "organization": source.organization,
-                    "year": source.year,
-                    "title": source.title,
-                    "url": source.link,
-                    "excerpt": f"Similitud: {source.similarity}"
-                } for i, source in enumerate(result["sources"])]
+                try:
+                    citations = [{
+                        "id": f"cite-{i}",
+                        "label": f"[{i + 1}]",
+                        "organization": source.organization,
+                        "year": source.year,
+                        "title": source.title,
+                        "url": source.link,
+                        "excerpt": f"Similitud: {source.similarity}"
+                    } for i, source in enumerate(result["sources"])]
 
-                save_message(request.chat_id, "assistant", result["answer"], citations)
+                    assistant_msg_id = save_message(request.chat_id, "assistant", result["answer"], citations, result["sources"])
+                except Exception as cite_error:
+                    print(f"Error creating citations: {cite_error}")
+                    # Save without citations if citations fail, but with sources
+                    assistant_msg_id = save_message(request.chat_id, "assistant", result["answer"], sources=result["sources"])
+                print(f"Successfully saved assistant message with ID: {assistant_msg_id}")
             except Exception as save_error:
                 # Log but don't fail the query if saving fails
-                print(f"Warning: Failed to save chat message: {save_error}")
+                print(f"Error: Failed to save chat message: {save_error}")
+                import traceback
+                traceback.print_exc()
 
         return QueryResponse(
             query=request.query,

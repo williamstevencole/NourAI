@@ -63,8 +63,8 @@ export const MessageBubble = memo(function MessageBubble({ message }: MessageBub
           </div>
 
           {/* Citations */}
-          {!isUser && message.citations && message.citations.length > 0 && (
-            <Citations citations={message.citations} />
+          {!isUser && (message.citations || message.sources) && (
+            <Citations citations={message.citations} sources={message.sources} />
           )}
 
           {/* Actions bar */}

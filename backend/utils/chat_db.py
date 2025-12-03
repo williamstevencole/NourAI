@@ -40,6 +40,12 @@ def init_database():
         conn.execute('CREATE INDEX IF NOT EXISTS idx_messages_timestamp ON messages(timestamp)')
         conn.execute('CREATE INDEX IF NOT EXISTS idx_chats_updated_at ON chats(updated_at)')
 
+        # Add sources column if it doesn't exist (for backward compatibility)
+        try:
+            conn.execute('ALTER TABLE messages ADD COLUMN sources TEXT')
+        except sqlite3.OperationalError:
+            pass  # Column already exists
+
 def create_chat(title: str) -> str:
     """Create a new chat thread and return its ID."""
     chat_id = f"chat_{int(datetime.now().timestamp() * 1000)}"
@@ -52,24 +58,33 @@ def create_chat(title: str) -> str:
 
     return chat_id
 
-def save_message(chat_id: str, role: str, content: str, citations: Optional[List[Dict[str, Any]]] = None) -> str:
+def save_message(chat_id: str, role: str, content: str, citations: Optional[List[Dict[str, Any]]] = None, sources: Optional[List[Dict[str, Any]]] = None) -> str:
     """Save a message to the database and return its ID."""
     message_id = f"msg_{int(datetime.now().timestamp() * 1000)}"
 
-    with sqlite3.connect(CHAT_DB_PATH) as conn:
-        citations_json = json.dumps(citations) if citations else None
+    try:
+        with sqlite3.connect(CHAT_DB_PATH) as conn:
+            citations_json = json.dumps(citations) if citations else None
+            sources_json = json.dumps(sources) if sources else None
+            print(f"Saving message: role={role}, content_length={len(content)}, citations_present={citations is not None}, sources_present={sources is not None}")
 
-        conn.execute('''
-            INSERT INTO messages (id, chat_id, role, content, citations)
-            VALUES (?, ?, ?, ?, ?)
-        ''', (message_id, chat_id, role, content, citations_json))
+            conn.execute('''
+                INSERT INTO messages (id, chat_id, role, content, citations, sources)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (message_id, chat_id, role, content, citations_json, sources_json))
 
-        # Update chat's updated_at timestamp
-        conn.execute('''
-            UPDATE chats SET updated_at = CURRENT_TIMESTAMP WHERE id = ?
-        ''', (chat_id,))
+            # Update chat's updated_at timestamp
+            conn.execute('''
+                UPDATE chats SET updated_at = CURRENT_TIMESTAMP WHERE id = ?
+            ''', (chat_id,))
 
-    return message_id
+        print(f"Successfully saved message with ID: {message_id}")
+        return message_id
+    except Exception as e:
+        print(f"Error saving message: {e}")
+        import traceback
+        traceback.print_exc()
+        raise
 
 def get_chat_list(limit: int = 50) -> List[Dict[str, Any]]:
     """Get list of chats ordered by most recent update."""
@@ -92,7 +107,7 @@ def get_chat_messages(chat_id: str) -> List[Dict[str, Any]]:
     """Get all messages for a specific chat."""
     with sqlite3.connect(CHAT_DB_PATH) as conn:
         rows = conn.execute('''
-            SELECT id, role, content, citations, timestamp
+            SELECT id, role, content, citations, sources, timestamp
             FROM messages
             WHERE chat_id = ?
             ORDER BY timestamp ASC
@@ -104,10 +119,12 @@ def get_chat_messages(chat_id: str) -> List[Dict[str, Any]]:
                 'id': row[0],
                 'role': row[1],
                 'content': row[2],
-                'timestamp': row[4]
+                'timestamp': row[5]
             }
             if row[3]:  # citations
                 message['citations'] = json.loads(row[3])
+            if row[4]:  # sources
+                message['sources'] = json.loads(row[4])
             messages.append(message)
 
         return messages

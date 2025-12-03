@@ -48,6 +48,7 @@ export interface Message {
   role: 'user' | 'assistant';
   content: string;
   citations?: Citation[];
+  sources?: Source[];
   timestamp: string;
 }
 

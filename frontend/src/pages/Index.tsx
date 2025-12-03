@@ -256,6 +256,7 @@ const Index = () => {
       <ChatSidebar
         chatHistory={chatHistory}
         currentChatId={currentChatId}
+        isTyping={isTyping}
         onSelectChat={handleSelectChat}
         onNewChat={handleNewChat}
         onDeleteChat={handleDeleteChat}
