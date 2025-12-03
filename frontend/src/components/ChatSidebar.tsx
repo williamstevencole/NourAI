@@ -2,6 +2,7 @@ import { MessageSquare, Plus, Trash2, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
+import { toast } from '@/hooks/use-toast';
 import {
   Sidebar,
   SidebarContent,
@@ -24,6 +25,7 @@ interface ChatHistoryItem {
 interface ChatSidebarProps {
   chatHistory: ChatHistoryItem[];
   currentChatId?: string;
+  isTyping?: boolean;
   onSelectChat: (chatId: string) => void;
   onNewChat: () => void;
   onDeleteChat: (chatId: string) => void;
@@ -32,6 +34,7 @@ interface ChatSidebarProps {
 export function ChatSidebar({
   chatHistory,
   currentChatId,
+  isTyping = false,
   onSelectChat,
   onNewChat,
   onDeleteChat,
@@ -60,8 +63,18 @@ export function ChatSidebar({
                     <div className="relative flex items-center">
                       <SidebarMenuButton
                         isActive={currentChatId === chat.id}
-                        onClick={() => onSelectChat(chat.id)}
-                        className="flex-1 justify-start gap-2 pr-8"
+                        onClick={() => {
+                          if (isTyping) {
+                            toast({
+                              title: 'Consulta en progreso',
+                              description: 'Espera a que termine la consulta actual antes de cambiar de chat.',
+                              variant: 'destructive',
+                            });
+                            return;
+                          }
+                          onSelectChat(chat.id);
+                        }}
+                        className={`flex-1 justify-start gap-2 pr-8 ${isTyping ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         <MessageSquare className="h-4 w-4 shrink-0" />
                         <div className="flex flex-col items-start overflow-hidden">

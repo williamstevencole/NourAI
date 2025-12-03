@@ -13,6 +13,7 @@ export interface Message {
   role: 'user' | 'assistant';
   content: string;
   citations?: Citation[];
+  sources?: any[]; // Raw sources from database
   timestamp: Date;
 }
 
