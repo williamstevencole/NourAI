@@ -1,8 +1,8 @@
-import { MessageSquare, Plus, Trash2, Search } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Input } from '@/components/ui/input';
-import { toast } from '@/hooks/use-toast';
+import { MessageSquare, Plus, Trash2, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
 import {
   Sidebar,
   SidebarContent,
@@ -13,7 +13,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
-} from '@/components/ui/sidebar';
+} from "@/components/ui/sidebar";
 
 interface ChatHistoryItem {
   id: string;
@@ -42,7 +42,11 @@ export function ChatSidebar({
   return (
     <Sidebar className="bg-background border-r border-border">
       <SidebarHeader className="border-b border-border p-4">
-        <Button onClick={onNewChat} className="w-full justify-start gap-2" size="sm">
+        <Button
+          onClick={onNewChat}
+          className="w-full justify-start gap-2"
+          size="sm"
+        >
           <Plus className="h-4 w-4" />
           Nuevo Chat
         </Button>
@@ -59,26 +63,31 @@ export function ChatSidebar({
             <ScrollArea className="h-[calc(100vh-12rem)]">
               <SidebarMenu className="gap-2">
                 {chatHistory.map((chat) => (
-                  <SidebarMenuItem key={chat.id} className="group/item">
-                    <div className="relative flex items-center">
+                  <SidebarMenuItem key={chat.id}>
+                    <div className="group/item relative flex items-center w-full">
                       <SidebarMenuButton
                         isActive={currentChatId === chat.id}
                         onClick={() => {
                           if (isTyping) {
                             toast({
-                              title: 'Consulta en progreso',
-                              description: 'Espera a que termine la consulta actual antes de cambiar de chat.',
-                              variant: 'destructive',
+                              title: "Consulta en progreso",
+                              description:
+                                "Espera a que termine la consulta actual antes de cambiar de chat.",
+                              variant: "destructive",
                             });
                             return;
                           }
                           onSelectChat(chat.id);
                         }}
-                        className={`flex-1 justify-start gap-2 pr-8 ${isTyping ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`flex-1 justify-start gap-2 pr-2 ${
+                          isTyping ? "opacity-50 cursor-not-allowed" : ""
+                        }`}
                       >
                         <MessageSquare className="h-4 w-4 shrink-0" />
-                        <div className="flex flex-col items-start overflow-hidden">
-                          <span className="truncate text-sm font-medium">{chat.title}</span>
+                        <div className="flex flex-col items-start overflow-hidden min-w-0 flex-1">
+                          <span className="truncate text-sm font-medium w-full max-w-full">
+                            {chat.title}
+                          </span>
                           <span className="text-xs text-muted-foreground">
                             {new Date(chat.updated_at).toLocaleDateString()}
                           </span>
@@ -87,13 +96,14 @@ export function ChatSidebar({
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute right-1 h-7 w-7 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                        className="shrink-0 h-7 w-7 opacity-0 group-hover/item:opacity-100 transition-opacity hover:bg-destructive/10"
                         onClick={(e) => {
                           e.stopPropagation();
                           onDeleteChat(chat.id);
                         }}
+                        title="Eliminar chat"
                       >
-                        <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                        <Trash2 className="h-4 w-4 text-destructive" />
                       </Button>
                     </div>
                   </SidebarMenuItem>
