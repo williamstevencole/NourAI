@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Paths
 BASE_DIR = Path(__file__).parent
@@ -7,20 +10,40 @@ DATA_DIR = BASE_DIR / "data"
 PDF_DIR = DATA_DIR / "pdfs"
 CHROMA_PATH = str(DATA_DIR / "chroma")
 
-
 PDF_DIR.mkdir(parents=True, exist_ok=True)
 
-# Models
+# ============== PROVIDER SELECTION ==============
+# LLM: "local" (Ollama), "groq", "openrouter"
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "local")
 
-# intfloat/multilingual-e5-large
-# intfloat/multilingual-e5-small
-# sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
-# sentence-transformers/all-mpnet-base-v2
-# sentence-transformers/all-MiniLM-L6-v2
+# Vector DB: "chroma" (local), "pinecone" (cloud)
+VECTOR_DB_PROVIDER = os.getenv("VECTOR_DB_PROVIDER", "chroma")
+
+# ============== EMBEDDING MODEL ==============
 EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
-LLM_MODEL = "llama3.2:3b" # llama3.2:3b, llama3, mistral:instruct
+EMBEDDING_DIMENSION = 1024
 
-TEMPERATURE = 0.3 # 0.0
+# ============== LLM SETTINGS ==============
+TEMPERATURE = 0.3
+MAX_TOKENS = 4096
+
+# Ollama (local)
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+
+# Groq
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-70b-versatile")
+
+# OpenRouter
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.1-70b-instruct")
+OPENROUTER_APP_NAME = os.getenv("OPENROUTER_APP_NAME", "NutriRAG")
+OPENROUTER_APP_URL = os.getenv("OPENROUTER_APP_URL", "http://localhost:8000")
+
+# ============== PINECONE ==============
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "nutri-rag")
 
 # Chunking
 CHUNK_SIZE = 500

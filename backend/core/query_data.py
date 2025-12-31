@@ -5,12 +5,11 @@ from pathlib import Path
 # Add parent directory to path to import config when running script on terminal
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.llms.ollama import Ollama
 
-from config import CHROMA_PATH, LLM_MODEL, TOP_K, SIMILARITY_THRESHOLD, SYSTEM_PROMPT, PROMPT_TEMPLATE, TEMPERATURE
-from utils.embedding_function import get_embedding_function
+from config import TOP_K, SIMILARITY_THRESHOLD, SYSTEM_PROMPT, PROMPT_TEMPLATE
+from utils.llm_factory import get_llm
+from utils.db_factory import query as db_query
 
 
 def build_clinical_context(clinical_data: dict) -> str:
@@ -87,15 +86,9 @@ def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -
     """
     Query the RAG system and get an answer with sources.
     """
-    # Load the vector database
-    db = Chroma(
-        persist_directory=CHROMA_PATH,
-        embedding_function=get_embedding_function()
-    )
-
-    # Search the database
+    # Search the database using the configured provider
     search_query = expand_diet_query(query_text)
-    results = db.similarity_search_with_score(search_query, k=top_k)
+    results = db_query(search_query, top_k=top_k)
 
     if not results:
         return {
@@ -120,8 +113,14 @@ def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -
     prompt = prompt_template.format(context=context_text, question=query_text)
     full_prompt = f"{SYSTEM_PROMPT}{clinical_context}\n\n{prompt}"
 
-    model = Ollama(model=LLM_MODEL, temperature=TEMPERATURE)
-    response_text = model.invoke(full_prompt)
+    model = get_llm()
+    response = model.invoke(full_prompt)
+
+    # Handle both ChatOpenAI (AIMessage) and Ollama (str) responses
+    if hasattr(response, 'content'):
+        response_text = response.content
+    else:
+        response_text = str(response)
 
 
     sources = [extract_source_info(doc, score) for doc, score in filtered_results]
