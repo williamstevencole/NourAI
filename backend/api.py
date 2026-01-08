@@ -4,9 +4,9 @@ from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
 import uvicorn
 
-from core.query_data import query_rag
+from core.query_data import query_rag, generate_chat_title
 from config import TOP_K
-from utils.chat_db import create_chat, save_message, get_chat_list, get_chat_messages, delete_chat
+from utils.chat_db import create_chat, save_message, get_chat_list, get_chat_messages, delete_chat, update_chat_title
 
 app = FastAPI(
     title="NourAI API",
@@ -66,12 +66,22 @@ class MessageSaveRequest(BaseModel):
     role: str
     content: str
     citations: Optional[List[Dict[str, Any]]] = None
+    sources: Optional[List[Dict[str, Any]]] = None
 
 class MessageSaveResponse(BaseModel):
     message_id: str
 
 class ChatMessagesResponse(BaseModel):
     messages: List[Dict[str, Any]]
+
+class GenerateTitleRequest(BaseModel):
+    prompt: str
+
+class GenerateTitleResponse(BaseModel):
+    title: str
+
+class UpdateTitleRequest(BaseModel):
+    title: str
 
 
 @app.get("/")
@@ -188,7 +198,7 @@ def get_chat(chat_id: str):
 def save_chat_message(chat_id: str, request: MessageSaveRequest):
     """Save a message to a chat."""
     try:
-        message_id = save_message(chat_id, request.role, request.content, request.citations)
+        message_id = save_message(chat_id, request.role, request.content, request.citations, request.sources)
         return MessageSaveResponse(message_id=message_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to save message: {str(e)}")
@@ -206,6 +216,16 @@ def delete_chat_endpoint(chat_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to delete chat: {str(e)}")
+
+
+@app.post("/api/generate-chat-title", response_model=GenerateTitleResponse)
+def generate_title(request: GenerateTitleRequest):
+    """Generate a chat title based on the first message."""
+    try:
+        title = generate_chat_title(request.prompt)
+        return GenerateTitleResponse(title=title)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate title: {str(e)}")
 
 
 @app.get("/api/health")

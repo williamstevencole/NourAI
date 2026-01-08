@@ -1,5 +1,6 @@
 import argparse
 import sys
+import re
 from pathlib import Path
 
 # Add parent directory to path to import config when running script on terminal
@@ -80,6 +81,46 @@ def extract_source_info(doc, score: float) -> dict:
         "link": doc.metadata.get("link"),
         "similarity": f"{score*100:.1f}%"
     }
+
+
+def generate_chat_title(prompt: str) -> str:
+    """
+    Generate a concise chat title based on the user's first message.
+    Uses the configured LLM to create a short, descriptive title.
+    """
+
+    title_prompt = f"""
+        Genera un título muy corto (máximo 5 palabras) para una conversación que comienza con el siguiente mensaje.
+        El título debe ser descriptivo y capturar la esencia de la pregunta.
+        Solo responde con el título, sin comillas ni puntuación final.
+
+        Mensaje: {prompt}
+
+        Título:
+    """
+
+    try:
+        model = get_llm()
+        response = model.invoke(title_prompt)
+
+        # Handle both ChatOpenAI (AIMessage) and Ollama (str) responses
+        if hasattr(response, 'content'):
+            title = response.content.strip()
+        else:
+            title = str(response).strip()
+
+        # Clean up the title 
+        title = re.sub(r'</?s>', '', title)
+        title = title.strip('"\'')
+        title = title.strip()
+        if len(title) > 50:
+            title = title[:47] + "..."
+
+        return title if title else prompt[:50]
+    except Exception as e:
+        print(f"Error generating chat title: {e}")
+        # Fallback to truncated prompt
+        return prompt[:50] + "..." if len(prompt) > 50 else prompt
 
 
 def query_rag(query_text: str, top_k: int = TOP_K, clinical_data: dict = None) -> dict:

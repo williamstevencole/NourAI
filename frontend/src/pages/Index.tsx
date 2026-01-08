@@ -89,30 +89,9 @@ const Index = () => {
   };
 
   const handleSendMessage = async (content: string) => {
-    let chatId = currentChatId;
+    const isNewChat = !currentChatId;
 
-    // Create new chat if none exists
-    if (!chatId) {
-      try {
-        const chatResponse = await api.createChat(content.length > 50 ? content.substring(0, 50) + '...' : content);
-        chatId = chatResponse.chat_id;
-        setCurrentChatId(chatId);
-
-        // Refresh chat history
-        const historyResponse = await api.listChats();
-        setChatHistory(historyResponse.chats);
-      } catch (error) {
-        console.error('Failed to create chat:', error);
-        toast({
-          title: 'Error',
-          description: 'No se pudo crear el chat.',
-          variant: 'destructive',
-        });
-        return;
-      }
-    }
-
-    // Add user message
+    // Add user message to UI immediately
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
@@ -130,14 +109,13 @@ const Index = () => {
     setTypingStatus('Analizando tu pregunta...');
 
     try {
-      // Call API with chat_id
       setTimeout(() => setTypingStatus('Buscando información en guías oficiales...'), 500);
 
       const response = await api.query({
         query: content,
         mode,
         clinical_data: isClinicalQuery ? clinicalData || undefined : undefined,
-        chat_id: chatId,
+        chat_id: isNewChat ? undefined : currentChatId,
       });
 
       setTypingStatus('Generando respuesta...');
@@ -164,7 +142,46 @@ const Index = () => {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Refresh chat history to update timestamps
+      if (isNewChat) {
+        try {
+          // Generate title with AI
+          let title = content.length > 50 ? content.substring(0, 50) + '...' : content;
+          try {
+            const titleResponse = await api.generateChatTitle(content);
+            title = titleResponse.title;
+          } catch (titleError) {
+            console.warn('Failed to generate AI title, using fallback:', titleError);
+          }
+
+          // Create the chat with the generated title
+          const chatResponse = await api.createChat(title);
+          const newChatId = chatResponse.chat_id;
+
+          // Save both messages to the new chat
+          await api.saveMessage(newChatId, {
+            role: 'user',
+            content,
+          });
+
+          await api.saveMessage(newChatId, {
+            role: 'assistant',
+            content: response.answer,
+            citations,
+            sources: response.sources,
+          });
+
+          setCurrentChatId(newChatId);
+        } catch (error) {
+          console.error('Failed to create/save chat:', error);
+          toast({
+            title: 'Advertencia',
+            description: 'La respuesta se mostró pero no se pudo guardar el chat.',
+            variant: 'destructive',
+          });
+        }
+      }
+
+      // Refresh chat history
       const historyResponse = await api.listChats();
       setChatHistory(historyResponse.chats);
     } catch (error) {

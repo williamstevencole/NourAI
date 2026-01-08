@@ -78,6 +78,21 @@ export interface CreateChatResponse {
   chat_id: string;
 }
 
+export interface GenerateTitleResponse {
+  title: string;
+}
+
+export interface SaveMessageRequest {
+  role: 'user' | 'assistant';
+  content: string;
+  citations?: Citation[];
+  sources?: Source[];
+}
+
+export interface SaveMessageResponse {
+  message_id: string;
+}
+
 export const api = {
   async query(request: QueryRequest): Promise<QueryResponse> {
     const response = await fetch(`${API_BASE_URL}/api/query`, {
@@ -149,5 +164,37 @@ export const api = {
     if (!response.ok) {
       throw new Error(`Failed to delete chat: ${response.statusText}`);
     }
+  },
+
+  async generateChatTitle(prompt: string): Promise<GenerateTitleResponse> {
+    const response = await fetch(`${API_BASE_URL}/api/generate-chat-title`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prompt }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to generate title: ${response.statusText}`);
+    }
+
+    return response.json();
+  },
+
+  async saveMessage(chatId: string, message: SaveMessageRequest): Promise<SaveMessageResponse> {
+    const response = await fetch(`${API_BASE_URL}/api/chats/${chatId}/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to save message: ${response.statusText}`);
+    }
+
+    return response.json();
   },
 };
